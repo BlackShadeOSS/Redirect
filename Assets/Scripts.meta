@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: c833e624b2f594f469e93c32ee12fd32
+<<<<<<<< HEAD:Assets/ScriptsMainMenu.meta
+guid: 0dfcf3ad86041334aa63bc2fa81a01a7
+========
+guid: a2e44c5b05f9bd0619270211fa9ae6a7
+>>>>>>>> origin/main:Assets/Tiles.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
