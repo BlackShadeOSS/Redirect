@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4d654a35ef400e34485376efb73df67c
+guid: d2daff16990ff108d9bf30654aad31ff
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      test_tile2_0: 1549315823908625540
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
