@@ -27,7 +27,7 @@ public class MultiInputSystem : MonoBehaviour
     private void FixedUpdate()
     {
         if (!_isMovementEnabled) return;
-        _rigidbody.velocity = _movementInput * _moveSpeed;
+        _rigidbody.linearVelocity = _movementInput * _moveSpeed;
         LastDirection = GetDirection(_movementInput);
         if (lastStepTime + stepIntenisty < Time.time && _isMoving)
         {
@@ -67,6 +67,6 @@ public class MultiInputSystem : MonoBehaviour
     public void disableMovement()
     {
         _isMovementEnabled = false;
-        _rigidbody.velocity = Vector2.zero;
+        _rigidbody.linearVelocity = Vector2.zero;
     }
 }
