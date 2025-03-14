@@ -1,8 +1,12 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Movement : MonoBehaviour
-{     
+
+public class MultiInputSystem : MonoBehaviour
+{   
     [SerializeField] private float _moveSpeed = 5.0f; 
     [SerializeField] public int LastDirection = 0;
     [SerializeField] private bool _isMoving = false;
