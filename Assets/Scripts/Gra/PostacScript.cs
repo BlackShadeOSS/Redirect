@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PostacScript : MonoBehaviour
 {     
@@ -6,6 +7,10 @@ public class PostacScript : MonoBehaviour
     public double hp = 100;
     public Rigidbody2D rb;
     public float moveCoefficient = 0.1f;
+    public float maxSpeed = 5.0f;
+    
+    private Vector2 moveDirection;
+    private float moveSpeed;
 
     private void move(float[] vector)
     {
@@ -16,25 +21,36 @@ public class PostacScript : MonoBehaviour
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public void OnUp()
     {
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
-        {
-            move(new float[]{0, moveCoefficient});
-        }
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
-        {
-            move(new float[]{moveCoefficient, 0});
-        }
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-        {
-            move(new float[]{-moveCoefficient, 0});
-        }
-        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-        {
-            move(new float[]{0, -moveCoefficient});
-        }
+        // move(new float[]{0, moveCoefficient});
+        
+        this.moveDirection += new Vector2(0, 1);
+    }
+
+    public void OnDown()
+    {
+        // move(new float[]{0, -moveCoefficient});
+        
+        this.moveDirection += new Vector2(0, -1);
+    }
+
+    public void OnLeft()
+    {
+        // move(new float[]{-moveCoefficient, 0});
+        
+        this.moveDirection += new Vector2(-1, 0);
+    }
+
+    public void OnRight()
+    {
+        // move(new float[]{moveCoefficient, 0});
+        
+        this.moveDirection += new Vector2(1, 0);
+    }
+    void FixedUpdate()
+    {
+        rb.linearVelocity += new Vector2(moveDirection.x, moveDirection.y) * moveCoefficient;
     }
 }
