@@ -21,7 +21,7 @@ public class MainMenuController : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Gra"); //do nazwy dopraw/ zostaw 1 zeby działalo/ daj scene gry jako 1 w play specs
+        SceneManager.LoadScene("Gra"); // game scene name
         Debug.Log("Vrum v");
     }
     public void QuitGame()

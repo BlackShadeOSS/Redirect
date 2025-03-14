@@ -153,7 +153,7 @@ public class LocalMultiplayerControllerSelection : MonoBehaviour
         {
             foreach (Transform child in playerToggleGroups[i].transform)
             {
-                DestroyImmediate(child.gameObject);
+                Destroy(child.gameObject);
             }
         }
     }
