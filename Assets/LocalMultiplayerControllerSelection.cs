@@ -18,6 +18,8 @@ public class LocalMultiplayerControllerSelection : MonoBehaviour
     public Button startButton;
     [SerializeField]
     public InputDevice[] SelectedDevices;
+
+    //private int couner;
     
     public void SelectDevice(int index, int playerNumber)
     {
@@ -34,14 +36,14 @@ public class LocalMultiplayerControllerSelection : MonoBehaviour
 
     private void Start()
     {
-        DeleteAllToggles();
+        UpdateInputDeviceList();
     }
 
     private void OnEnable()
     {
         InputSystem.onDeviceChange += OnDeviceChange;
         SelectedDevices = new InputDevice[playerToggleGroups.Length];
-        UpdateInputDeviceList(); // Initialize the list on enable
+        UpdateToggleGroupOptions(); // Initialize the list on enable
     }
 
     private void OnDisable()
@@ -236,6 +238,6 @@ public class LocalMultiplayerControllerSelection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
