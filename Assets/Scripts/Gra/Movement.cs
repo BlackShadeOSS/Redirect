@@ -5,14 +5,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class MultiInputSystem : MonoBehaviour
+public class Movement : MonoBehaviour
 {   
     [SerializeField] private float _moveSpeed = 5.0f; 
     [SerializeField] public int LastDirection = 0;
     [SerializeField] private bool _isMoving = false;
     [SerializeField] private bool _isMovementEnabled = true;
     [SerializeField] private float stepIntenisty = 0.3f;
-    [SerializeField] private AudioSource stepSound;
+    // [SerializeField] private AudioSource stepSound;
     private Rigidbody2D _rigidbody;
     private Vector2 _movementInput;
     
@@ -32,7 +32,7 @@ public class MultiInputSystem : MonoBehaviour
         if (lastStepTime + stepIntenisty < Time.time && _isMoving)
         {
             lastStepTime = Time.time;
-            stepSound.Play();
+            // stepSound.Play();
             //Debug.Log("Step");
         }
     }
