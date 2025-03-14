@@ -227,9 +227,8 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 6e84d798b479e72b79c27d3b1d5aa096, type: 3}
 --- !u!4 &485595402
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7248159495440194582, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
+  m_PrefabInstance: {fileID: 1822693171}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615449113}
   serializedVersion: 2

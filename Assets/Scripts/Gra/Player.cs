@@ -9,6 +9,8 @@ public class Player : MonoBehaviour
     public GameObject bullet;
     public float bulletSpeed = 1;
     private Vector2 look;
+    public int hp = 100;
+    public float parryColdown = 5f;
     
     public void OnFire(InputValue value)
     {   
@@ -42,6 +44,6 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
