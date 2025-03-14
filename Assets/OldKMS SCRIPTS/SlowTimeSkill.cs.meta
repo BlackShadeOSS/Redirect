@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: e43d0a8a9940a03ed909222ae9b2c8b9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - slowTimeCirclePrefab: {fileID: 5341766686173254570, guid: 6df56c514ec90c2cbbae9eeb13560c47, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
