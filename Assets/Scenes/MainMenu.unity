@@ -1038,6 +1038,8 @@ MonoBehaviour:
   OptionsPanel: {fileID: 189463494}
   CreditsPanel: {fileID: 285542314}
   PadPanel: {fileID: 1379395417}
+  MultiplierManager: {fileID: 793810979}
+  localMultiplayerControllerSelection: {fileID: 0}
 --- !u!4 &350750662
 Transform:
   m_ObjectHideFlags: 0
