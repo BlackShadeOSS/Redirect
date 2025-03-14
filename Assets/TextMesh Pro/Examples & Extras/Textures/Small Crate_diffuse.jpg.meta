@@ -1,9 +1,20 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/TextMesh Pro/Examples & Extras/Textures/Small Crate_diffuse.jpg.meta
 guid: 602cb87b6a29443b8636370ea0751574
 TextureImporter:
   fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 7
+========
+guid: d2daff16990ff108d9bf30654aad31ff
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1549315823908625540
+    second: test_tile2_0
+  externalObjects: {}
+  serializedVersion: 13
+>>>>>>>> origin/main:Assets/Tiles/Podloga/test_tile2.png.meta
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -31,21 +42,31 @@ TextureImporter:
   maxTextureSize: 512
   textureSettings:
     serializedVersion: 2
+<<<<<<<< HEAD:Assets/TextMesh Pro/Examples & Extras/Textures/Small Crate_diffuse.jpg.meta
     filterMode: -1
     aniso: 16
     mipBias: -100
+========
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+>>>>>>>> origin/main:Assets/Tiles/Podloga/test_tile2.png.meta
     wrapU: 1
     wrapV: 1
     wrapW: 1
   nPOTScale: 1
   lightmap: 0
   compressionQuality: 50
+<<<<<<<< HEAD:Assets/TextMesh Pro/Examples & Extras/Textures/Small Crate_diffuse.jpg.meta
   spriteMode: 0
+========
+  spriteMode: 2
+>>>>>>>> origin/main:Assets/Tiles/Podloga/test_tile2.png.meta
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -58,11 +79,16 @@ TextureImporter:
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
+<<<<<<<< HEAD:Assets/TextMesh Pro/Examples & Extras/Textures/Small Crate_diffuse.jpg.meta
   - serializedVersion: 2
+========
+  - serializedVersion: 4
+>>>>>>>> origin/main:Assets/Tiles/Podloga/test_tile2.png.meta
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
+<<<<<<<< HEAD:Assets/TextMesh Pro/Examples & Extras/Textures/Small Crate_diffuse.jpg.meta
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -74,12 +100,15 @@ TextureImporter:
     maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
+========
+>>>>>>>> origin/main:Assets/Tiles/Podloga/test_tile2.png.meta
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+<<<<<<<< HEAD:Assets/TextMesh Pro/Examples & Extras/Textures/Small Crate_diffuse.jpg.meta
   - serializedVersion: 2
     buildTarget: Android
     maxTextureSize: 512
@@ -105,6 +134,12 @@ TextureImporter:
   - serializedVersion: 2
     buildTarget: WebGL
     maxTextureSize: 512
+========
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+>>>>>>>> origin/main:Assets/Tiles/Podloga/test_tile2.png.meta
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -115,16 +150,52 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: test_tile2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48c17f08886408510800000000000000
+      internalID: 1549315823908625540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
+    customData: 
     physicsShape: []
     bones: []
     spriteID: 
+<<<<<<<< HEAD:Assets/TextMesh Pro/Examples & Extras/Textures/Small Crate_diffuse.jpg.meta
+========
+    internalID: 0
+>>>>>>>> origin/main:Assets/Tiles/Podloga/test_tile2.png.meta
     vertices: []
     indices: 
     edges: []
     weights: []
+<<<<<<<< HEAD:Assets/TextMesh Pro/Examples & Extras/Textures/Small Crate_diffuse.jpg.meta
   spritePackingTag: 
+========
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      test_tile2_0: 1549315823908625540
+  mipmapLimitGroupName: 
+>>>>>>>> origin/main:Assets/Tiles/Podloga/test_tile2.png.meta
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
   userData: 
