@@ -1,0 +1,481 @@
+fileFormatVersion: 2
+guid: 7d2c9ae4792dd31468059fa68a6fd232
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5111376908971788543
+    second: OSD_Logo_0
+  - first:
+      213: 5553198716038990532
+    second: OSD_Logo_1
+  - first:
+      213: 8762259618579630626
+    second: OSD_Logo_2
+  - first:
+      213: -5536251129012469523
+    second: OSD_Logo_3
+  - first:
+      213: 7753065831196487480
+    second: OSD_Logo_4
+  - first:
+      213: -6880471792046986834
+    second: OSD_Logo_5
+  - first:
+      213: 6527044391670023273
+    second: OSD_Logo_6
+  - first:
+      213: 6498043271763111308
+    second: OSD_Logo_7
+  - first:
+      213: 2151648879849985484
+    second: OSD_Logo_8
+  - first:
+      213: -4117786934209281082
+    second: OSD_Logo_9
+  - first:
+      213: -1534319956550926127
+    second: OSD_Logo_10
+  - first:
+      213: -5274859222070250211
+    second: OSD_Logo_11
+  - first:
+      213: 5642868893535586475
+    second: OSD_Logo_12
+  - first:
+      213: -7328999875066569802
+    second: OSD_Logo_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: OSD_Logo_0
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 285
+        width: 547
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1073a9358cdb019b0800000000000000
+      internalID: -5111376908971788543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OSD_Logo_1
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 173
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cac8a46fcce01d40800000000000000
+      internalID: 5553198716038990532
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OSD_Logo_2
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 173
+        width: 58
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22a403bd2bcc99970800000000000000
+      internalID: 8762259618579630626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OSD_Logo_3
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 173
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de04bd33ee84b23b0800000000000000
+      internalID: -5536251129012469523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OSD_Logo_4
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 158
+        width: 41
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83f6fa4cb4c689b60800000000000000
+      internalID: 7753065831196487480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OSD_Logo_5
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 173
+        width: 41
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea9a1f30c57a380a0800000000000000
+      internalID: -6880471792046986834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OSD_Logo_6
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 173
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96482beda48b49a50800000000000000
+      internalID: 6527044391670023273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OSD_Logo_7
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 158
+        width: 41
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c8dae847defad2a50800000000000000
+      internalID: 6498043271763111308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OSD_Logo_8
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 173
+        width: 41
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc553dc91413cdd10800000000000000
+      internalID: 2151648879849985484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OSD_Logo_9
+      rect:
+        serializedVersion: 2
+        x: 612
+        y: 173
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c306bda99eaad6c0800000000000000
+      internalID: -4117786934209281082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OSD_Logo_10
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 173
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d04df1f02005bae0800000000000000
+      internalID: -1534319956550926127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OSD_Logo_11
+      rect:
+        serializedVersion: 2
+        x: 699
+        y: 173
+        width: 49
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d153f442c7febc6b0800000000000000
+      internalID: -5274859222070250211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OSD_Logo_12
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 173
+        width: 40
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba84a498c5f7f4e40800000000000000
+      internalID: 5642868893535586475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: OSD_Logo_13
+      rect:
+        serializedVersion: 2
+        x: 791
+        y: 173
+        width: 51
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bb56cfb1792a4a90800000000000000
+      internalID: -7328999875066569802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      OSD_Logo_0: -5111376908971788543
+      OSD_Logo_1: 5553198716038990532
+      OSD_Logo_10: -1534319956550926127
+      OSD_Logo_11: -5274859222070250211
+      OSD_Logo_12: 5642868893535586475
+      OSD_Logo_13: -7328999875066569802
+      OSD_Logo_2: 8762259618579630626
+      OSD_Logo_3: -5536251129012469523
+      OSD_Logo_4: 7753065831196487480
+      OSD_Logo_5: -6880471792046986834
+      OSD_Logo_6: 6527044391670023273
+      OSD_Logo_7: 6498043271763111308
+      OSD_Logo_8: 2151648879849985484
+      OSD_Logo_9: -4117786934209281082
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
