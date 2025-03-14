@@ -25,7 +25,8 @@ public class MainMenuController : MonoBehaviour
     {
         Debug.LogWarning(localMultiplayerControllerSelection.SelectedDevices);
         localMultiplayerControllerSelection.SaveSelectedDevices();
-        Debug.LogWarning(GlobalInputDeviceManager.SelectedDevices);
+        Debug.LogWarning(GlobalInputDeviceManager.SelectedDevices[0]);
+        Debug.LogWarning(GlobalInputDeviceManager.SelectedDevices[1]);
         SceneManager.LoadScene("Gra"); //do nazwy dopraw/ zostaw 1 zeby działalo/ daj scene gry jako 1 w play specs
         Debug.Log("Vrum v");
     }
