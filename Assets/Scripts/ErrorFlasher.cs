@@ -18,9 +18,11 @@ public class ErrorFlasher : MonoBehaviour
         if (LocalMultiplayerControllerSelection.AvailableInputDevices.Length >= 2)
         {
             StopFlashing();
+            errorText.enabled = false;
         }
         else
         {
+            errorText.enabled = true;
             StartFlashingIfNeeded();
         }
     }

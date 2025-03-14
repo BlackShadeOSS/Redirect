@@ -8,7 +8,7 @@ using TMPro;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-[ExecuteAlways]
+//[ExecuteAlways]
 
 public class LocalMultiplayerControllerSelection : MonoBehaviour
 {
