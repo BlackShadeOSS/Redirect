@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 377352189172614540}
   - component: {fileID: 3549816725592504299}
   - component: {fileID: 8326487724032962144}
-  - component: {fileID: 716635054161422059}
+  - component: {fileID: 4091720324841572470}
+  - component: {fileID: 7868530541749954384}
   m_Layer: 0
   m_Name: Postac
   m_TagString: Untagged
@@ -167,7 +168,24 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!61 &716635054161422059
+--- !u!114 &4091720324841572470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699359060016357184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c2a98495f173a04386b44f5a7e2b5e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 8326487724032962144}
+  bullet: {fileID: 4334623778946799681, guid: ef73048ca1e29184ca52849b3ea30369, type: 3}
+  bulletSpeed: 1
+  hp: 100
+  parryColdown: 5
+--- !u!61 &7868530541749954384
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
