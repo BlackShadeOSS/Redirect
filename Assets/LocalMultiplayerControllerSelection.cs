@@ -222,6 +222,12 @@ public class LocalMultiplayerControllerSelection : MonoBehaviour
             startButton.interactable = false;
         }
     }
+    
+    public void SaveSelectedDevices()
+    {
+        // Save devices to static manager
+        GlobalInputDeviceManager.SelectedDevices = SelectedDevices;
+    }
 
     private static string GetNumbers(string input)
     {
