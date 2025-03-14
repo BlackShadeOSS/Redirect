@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 15e67fc30af94693595127de18396a8e
+guid: f9a112e6f8ce9dddfb72cbff0189f29e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6239562839837555557
-    second: test_tile1_0
+      213: 5664552541565053368
+    second: Corner Up Right_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: test_tile1_0
+      name: Corner Up Right_0
       rect:
         serializedVersion: 2
         x: 0
@@ -108,15 +108,15 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b9441c1e7ae9869a0800000000000000
-      internalID: -6239562839837555557
+      spriteID: 8b9658346888c9e40800000000000000
+      internalID: 5664552541565053368
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 9add68798d63644b28ec77c40b66f140
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      test_tile1_0: -6239562839837555557
+      Corner Up Right_0: 5664552541565053368
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
