@@ -11,16 +11,21 @@ public class MainMenuController : MonoBehaviour
     public GameObject OptionsPanel;
     public GameObject CreditsPanel;
     public GameObject PadPanel;
-
-
+    public GameObject MultiplierManager;
+    public LocalMultiplayerControllerSelection localMultiplayerControllerSelection;
     public void Start()
     {
         CloseAllPanels();
         MenuPanel.SetActive(true);
+        localMultiplayerControllerSelection = MultiplierManager.GetComponent<LocalMultiplayerControllerSelection>();
+        Debug.LogWarning(localMultiplayerControllerSelection);
     }
 
     public void StartGame()
     {
+        Debug.LogWarning(localMultiplayerControllerSelection.SelectedDevices);
+        localMultiplayerControllerSelection.SaveSelectedDevices();
+        Debug.LogWarning(GlobalInputDeviceManager.SelectedDevices);
         SceneManager.LoadScene("Gra"); //do nazwy dopraw/ zostaw 1 zeby działalo/ daj scene gry jako 1 w play specs
         Debug.Log("Vrum v");
     }

@@ -153,7 +153,7 @@ public class LocalMultiplayerControllerSelection : MonoBehaviour
         {
             foreach (Transform child in playerToggleGroups[i].transform)
             {
-                DestroyImmediate(child.gameObject);
+                Destroy(child.gameObject);
             }
         }
     }
@@ -221,6 +221,12 @@ public class LocalMultiplayerControllerSelection : MonoBehaviour
         {
             startButton.interactable = false;
         }
+    }
+    
+    public void SaveSelectedDevices()
+    {
+        // Save devices to static manager
+        GlobalInputDeviceManager.SelectedDevices = SelectedDevices;
     }
 
     private static string GetNumbers(string input)
