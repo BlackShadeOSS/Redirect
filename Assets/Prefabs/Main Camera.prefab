@@ -151,15 +151,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   min: 1
-  max: 40.49
-  currentSize: 1
-  changeThreshold: 2.5
-  changeTresholdLeap: 0.2
-  moveSmoothness: 2
-  zoomSmoothness: 2
-  zoomOutSmoothness: 0.2
+  max: 141.6
+  currentSize: 26
+  changeThreshold: 1.7
+  changeTresholdLeap: 0.1
+  moveSmoothness: 2.32
+  zoomSmoothness: 2.46
+  zoomOutSmoothness: 0.85
   player1: {fileID: 0}
   player2: {fileID: 0}
-  zoomOutTimeThreshold: 2
+  zoomOutTimeThreshold: 2.2
   zoomOutFactor: 1.2
   val: 0
