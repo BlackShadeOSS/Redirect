@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d2daff16990ff108d9bf30654aad31ff
+guid: 747a776c6f9481831999fd995ca3400a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1549315823908625540
-    second: test_tile2_0
+      213: 7104637115903483216
+    second: Postac_Billy_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 2
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,12 +100,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: test_tile2_0
+      name: Postac_Billy_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 4
         y: 0
-        width: 32
+        width: 24
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 48c17f08886408510800000000000000
-      internalID: 1549315823908625540
+      spriteID: 05d9b7f90ddb89260800000000000000
+      internalID: 7104637115903483216
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      test_tile2_0: 1549315823908625540
+      Postac_Billy_0: 7104637115903483216
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
