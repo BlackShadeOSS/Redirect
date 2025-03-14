@@ -103,12 +103,12 @@ TextureImporter:
       name: steps_comm_sprite_ball_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1105
-        height: 627
+        x: 317
+        y: 149
+        width: 507
+        height: 337
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ecb82cb03f7abf145915e68216a715d1
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      steps_comm_sprite_ball_0: -563499918322111668
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
