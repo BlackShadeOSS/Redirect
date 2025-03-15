@@ -14,7 +14,6 @@ public class Movement : MonoBehaviour
     // [SerializeField] private AudioSource stepSound;
     
     [Header("Sprite References")]
-    [SerializeField] private GameObject spriteChildObject; // Child object with SpriteRenderer
     [SerializeField] private Sprite[] idleSprites = new Sprite[5]; // Array for idle sprites
     [SerializeField] private Sprite[] frameOneSprites = new Sprite[5]; // First animation frame
     [SerializeField] private Sprite[] frameTwoSprites = new Sprite[5]; // Second animation frame
@@ -33,16 +32,7 @@ public class Movement : MonoBehaviour
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        
-        // Get the SpriteRenderer from the child object
-        if (spriteChildObject != null)
-        {
-            _spriteRenderer = spriteChildObject.GetComponent<SpriteRenderer>();
-        }
-        else
-        {
-            Debug.LogError("Sprite child object not assigned!");
-        }
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -113,8 +103,8 @@ public class Movement : MonoBehaviour
         // Calculate angle (in degrees) of movement
         float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
         
-        // Normalize angle to 0-360 range
-        angle = (angle + 360) % 360;
+        // Fix for 90-degree rotation - subtract 90 degrees from the angle
+        angle = (angle - 90 + 360) % 360;
         
         // Convert angle to 8 directions (0-7)
         // 0 = North, 1 = Northeast, 2 = East, 3 = Southeast,
