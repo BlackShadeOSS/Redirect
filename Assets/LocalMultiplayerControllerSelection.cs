@@ -148,17 +148,6 @@ public class LocalMultiplayerControllerSelection : MonoBehaviour
         toggle.transform.localPosition = new Vector2(0, -30 * index);
         toggle.GetComponent<Toggle>().onValueChanged.AddListener((value) => OnToggleValueChanged(index, playerNumber, value));
     }
-    
-    private void DeleteAllToggles()
-    {
-        for (int i = 0; i < playerToggleGroups.Length; i++)
-        {
-            foreach (Transform child in playerToggleGroups[i].transform)
-            {
-                Destroy(child.gameObject);
-            }
-        }
-    }
 
     private void BlockTogglesUpdate(int playerNumber)
     {
@@ -192,13 +181,27 @@ public class LocalMultiplayerControllerSelection : MonoBehaviour
     private void OnToggleValueChanged(int index, int playerNumber, bool isOn)
     {
         Debug.Log("The value is " + isOn + " for player " + playerNumber + " with device index of " + index);
-        if (isOn == true)
+    
+        if (isOn)
         {
+            // When a toggle is turned on, ensure all other toggles for this player are turned off
+            var toggleGroup = playerToggleGroups[playerNumber - 1];
+            foreach (Transform child in toggleGroup.transform)
+            {
+                Toggle toggle = child.GetComponent<Toggle>();
+                if (toggle && toggle.isOn && child.GetComponentInChildren<Text>().text != AvailableInputDevices[index].displayName)
+                {
+                    toggle.isOn = false;
+                }
+            }
+        
             SelectDevice(index, playerNumber);
-        } else
+        }
+        else
         {
             SelectedDevices[playerNumber - 1] = null;
         }
+    
         BlockTogglesUpdate(playerNumber);
         CheckIfAllPlayersSelected();
     }
