@@ -34,6 +34,9 @@ public class LightFollow : MonoBehaviour
     // Light shape settings
     [Range(20f, 90f)]
     public float spotAngle = 45f;         // Cone angle for spotlight effect
+    
+    [Range(0.0f, 1f)]
+    public float shadowStrength = 1.0f;
     public float falloffStrength = 0.3f;   // Requested falloff strength
     
     // Prevent additive behavior options
@@ -158,17 +161,20 @@ public class LightFollow : MonoBehaviour
                     spotlightSupported = true;
                     
                     // Try to set spot angle properties if they exist
-                    var spotAngleProperty = light2D.GetType().GetProperty("innerSpotAngle");
-                    if (spotAngleProperty != null)
-                    {
-                        spotAngleProperty.SetValue(light2D, spotAngle * 0.7f);
-                    }
-                    
-                    spotAngleProperty = light2D.GetType().GetProperty("spotAngle");
-                    if (spotAngleProperty != null)
-                    {
-                        spotAngleProperty.SetValue(light2D, spotAngle);
-                    }
+                    // var spotAngleProperty = light2D.GetType().GetProperty("innerSpotAngle");
+                    // if (spotAngleProperty != null)
+                    // {
+                    //     spotAngleProperty.SetValue(light2D, spotAngle * 0.7f);
+                    // }
+                    //
+                    // spotAngleProperty = light2D.GetType().GetProperty("spotAngle");
+                    // if (spotAngleProperty != null)
+                    // {
+                    //     spotAngleProperty.SetValue(light2D, spotAngle);
+                    // }
+
+                    light2D.pointLightInnerAngle = spotAngle * 0.7f;
+                    light2D.pointLightOuterAngle = spotAngle;
                 }
                 catch
                 {
@@ -405,6 +411,9 @@ public class LightFollow : MonoBehaviour
         // Set light properties
         light2D.color = lightColor;
         light2D.intensity = intensity;
+        
+        // Shadow strenght
+        light2D.shadowIntensity = shadowStrength; 
         
         // Scale radius slightly based on distance
         float baseRadius = maxRayDistance * 0.4f;
