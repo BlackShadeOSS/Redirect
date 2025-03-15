@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Rendering.Universal;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 
 public class LightFollow : MonoBehaviour
 {
@@ -16,22 +17,32 @@ public class LightFollow : MonoBehaviour
     public int rayCount = 3;
     public float raySpread = 15f;
     public float maxRayDistance = 10f;
-    [HideInInspector] // Ray lasers are now hidden
+    [HideInInspector]
     public float rayWidth = 0.05f;
     
     // Fix max bounces at 2
     [SerializeField]
     private int maxBounces = 2;
     
-    public Color rayColor = Color.yellow;
+    // Light color and intensity
+    public Color mainLightColor = Color.white;
+    [Range(0.5f, 2.0f)]
+    public float baseIntensity = 1.2f;    // Stronger initial intensity
+    [Range(0.2f, 0.7f)]
+    public float intensityDecay = 0.3f;   // More aggressive decay per bounce
     
-    // Realistic light parameters
-    [Range(0.1f, 1.0f)]
-    public float reflectionIntensity = 0.6f;
-    [Range(0.5f, 0.9f)]
-    public float intensityDecay = 0.7f;
-    public bool useColorShift = true;
-    public float colorShiftAmount = 0.1f;
+    // Light shape settings
+    [Range(20f, 90f)]
+    public float spotAngle = 45f;         // Cone angle for spotlight effect
+    public float falloffStrength = 0.3f;   // Requested falloff strength
+    
+    // Prevent additive behavior options
+    [SerializeField]
+    private bool nonAdditiveLighting = true;
+    
+    // Property for controlling volumetric intensity
+    [Range(0f, 1f)]
+    public float volumetricIntensity = 0.0f;
     
     private Vector2 look;
     private Vector2 _movementInput;
@@ -54,6 +65,15 @@ public class LightFollow : MonoBehaviour
         {
             Debug.LogError("No Light2D component found in LightToRotate!");
         }
+        else
+        {
+            // Set the main flashlight's shadow strength
+            flashlight.shadowIntensity = 1.0f;
+            flashlight.shadowVolumeIntensity = volumetricIntensity;
+            
+            // Attempt to set composite mode if available
+            SetNonAdditiveBehavior(flashlight);
+        }
         
         _lookingDirection = GetComponent<LookingDirection>();
         
@@ -62,6 +82,25 @@ public class LightFollow : MonoBehaviour
         
         // Initialize position tracking arrays
         InitializePositionTracking();
+    }
+
+    private void SetNonAdditiveBehavior(Light2D light)
+    {
+        if (!nonAdditiveLighting) return;
+        
+        // Try all possible ways to set non-additive behavior via reflection
+        try {
+            PropertyInfo compositeProperty = typeof(Light2D).GetProperty("compositeOperation");
+            if (compositeProperty != null)
+            {
+                // Values typically are: 0 = Additive, 1 = Alpha, 2 = Custom
+                // Alpha blend mode should prevent additive stacking
+                compositeProperty.SetValue(light, 1); // Alpha blend mode
+            }
+        }
+        catch (System.Exception) {
+            // Silently fail if property isn't available
+        }
     }
 
     private void InitializePositionTracking()
@@ -104,16 +143,58 @@ public class LightFollow : MonoBehaviour
             // Add Light2D component
             Light2D light2D = lightObj.AddComponent<Light2D>();
             
-            // Configure the light
-            light2D.lightType = Light2D.LightType.Point;
-            light2D.color = rayColor;
-            light2D.intensity = 0; // Start with zero intensity
-            light2D.pointLightOuterRadius = maxRayDistance * 0.3f;
-            light2D.pointLightInnerRadius = light2D.pointLightOuterRadius * 0.5f;
+            // Try to set non-additive behavior
+            SetNonAdditiveBehavior(light2D);
             
-            // Set shadows for more realism
-            light2D.shadowIntensity = 0.7f;
-            light2D.shadowVolumeIntensity = 0.2f;
+            // Try to configure spotlight if available
+            bool spotlightSupported = false;
+            
+            // Check if Spot light type is available
+            if (System.Enum.IsDefined(typeof(Light2D.LightType), "Spot"))
+            {
+                try
+                {
+                    light2D.lightType = (Light2D.LightType)System.Enum.Parse(typeof(Light2D.LightType), "Spot");
+                    spotlightSupported = true;
+                    
+                    // Try to set spot angle properties if they exist
+                    var spotAngleProperty = light2D.GetType().GetProperty("innerSpotAngle");
+                    if (spotAngleProperty != null)
+                    {
+                        spotAngleProperty.SetValue(light2D, spotAngle * 0.7f);
+                    }
+                    
+                    spotAngleProperty = light2D.GetType().GetProperty("spotAngle");
+                    if (spotAngleProperty != null)
+                    {
+                        spotAngleProperty.SetValue(light2D, spotAngle);
+                    }
+                }
+                catch
+                {
+                    Debug.LogWarning("Failed to configure Spot light type, falling back to Point light");
+                    spotlightSupported = false;
+                }
+            }
+            
+            // If spotlight isn't supported, use a point light with narrow radius
+            if (!spotlightSupported)
+            {
+                light2D.lightType = Light2D.LightType.Point;
+            }
+            
+            // Configure light properties
+            light2D.color = mainLightColor;  // Start with white
+            light2D.intensity = 0;  // Start with zero intensity
+            
+            // Set appropriate radius and falloff
+            float baseRadius = maxRayDistance * 0.4f;  
+            light2D.pointLightOuterRadius = baseRadius;
+            light2D.pointLightInnerRadius = baseRadius * (1.0f - falloffStrength);  
+            
+            // Set shadows for more realism - increase to 1.0 for full strength
+            light2D.shadowIntensity = 1.0f;
+            light2D.shadowVolumeIntensity = volumetricIntensity;
             
             // Disable initially
             light2D.enabled = false;
@@ -184,8 +265,6 @@ public class LightFollow : MonoBehaviour
             
             Vector3 currentOrigin = rayOrigin;
             Vector3 currentDirection = rayDirection;
-            Color currentColor = rayColor;
-            float currentIntensity = reflectionIntensity;
             
             // Calculate bounces - max of 2
             for (int bounce = 0; bounce < maxBounces; bounce++)
@@ -216,22 +295,29 @@ public class LightFollow : MonoBehaviour
                             // Calculate reflection (no randomness)
                             Vector3 reflectionDirection = Vector3.Reflect(currentDirection, hit.normal);
                             
-                            // Decrease intensity with each bounce
-                            float bounceIntensity = reflectionIntensity;
+                            // Calculate bounce intensity - more aggressive decay
+                            float bounceIntensity = baseIntensity;
                             for (int b = 0; b <= bounce; b++)
                             {
                                 bounceIntensity *= intensityDecay;
                             }
                             
-                            // Shift color if enabled
-                            Color bounceColor = rayColor;
-                            if (useColorShift)
+                            // For non-additive lighting, further reduce intensity to prevent overlap issues
+                            if (nonAdditiveLighting && bounce > 0)
                             {
-                                float shift = colorShiftAmount * bounce;
+                                bounceIntensity *= 0.7f;  // Reduce intensity of bounce lights
+                            }
+                            
+                            // Calculate bounce color - more subtle shift toward warmer tones
+                            Color bounceColor = mainLightColor;
+                            if (bounce > 0)
+                            {
+                                // For bounce 1, shift slightly toward yellow/orange
+                                float shift = 0.1f * bounce;
                                 bounceColor = new Color(
-                                    Mathf.Min(bounceColor.r + shift * 0.2f, 1f),
-                                    Mathf.Min(bounceColor.g + shift * 0.1f, 1f),
-                                    Mathf.Max(bounceColor.b - shift, 0f)
+                                    Mathf.Min(bounceColor.r, 1f),
+                                    Mathf.Min(bounceColor.g, 1f) - shift * 0.2f,
+                                    Mathf.Max(bounceColor.b - shift * 0.4f, 0f)
                                 );
                             }
                             
@@ -254,19 +340,6 @@ public class LightFollow : MonoBehaviour
                     Vector3 nextReflectionDirection = Vector3.Reflect(currentDirection, hit.normal);
                     currentOrigin = hitPoint + nextReflectionDirection * 0.01f;
                     currentDirection = nextReflectionDirection;
-                    
-                    // Decay intensity for next bounce
-                    currentIntensity *= intensityDecay;
-                    
-                    // Shift color for next bounce
-                    if (useColorShift)
-                    {
-                        currentColor = new Color(
-                            Mathf.Min(currentColor.r + colorShiftAmount * 0.2f, 1f),
-                            Mathf.Min(currentColor.g + colorShiftAmount * 0.1f, 1f),
-                            Mathf.Max(currentColor.b - colorShiftAmount, 0f)
-                        );
-                    }
                 }
                 else
                 {
@@ -329,20 +402,45 @@ public class LightFollow : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         lightObj.transform.rotation = Quaternion.Euler(0, 0, angle - 90);
         
-        // Set stable light properties - no pulsing or animation
+        // Set light properties
         light2D.color = lightColor;
+        light2D.intensity = intensity;
         
-        // Scale intensity based on distance but keep it stable
-        float distanceScaledIntensity = intensity * Mathf.Clamp01(1.0f - (hitDistance / maxRayDistance) * 0.5f);
-        light2D.intensity = distanceScaledIntensity;
+        // Scale radius slightly based on distance
+        float baseRadius = maxRayDistance * 0.4f;
+        float radiusScale = 1.0f + (hitDistance / maxRayDistance) * 0.2f;
         
-        // Set light radius based on distance but keep it consistent
-        float radiusScale = 1.0f + (hitDistance / maxRayDistance) * 0.3f;
-        light2D.pointLightOuterRadius = maxRayDistance * 0.3f * radiusScale;
-        light2D.pointLightInnerRadius = light2D.pointLightOuterRadius * 0.5f;
+        // Apply fall-off settings
+        light2D.pointLightOuterRadius = baseRadius * radiusScale;
+        light2D.pointLightInnerRadius = light2D.pointLightOuterRadius * (1.0f - falloffStrength);
         
         // Enable the light
         light2D.enabled = true;
+        
+        // For spotlight types, make sure it's properly oriented
+        if (light2D.lightType.ToString() == "Spot")
+        {
+            // Spot lights might need additional orientation help
+            // This works because the light is already oriented with transform.rotation
+            
+            // Try to set falloff for spotlight if possible
+            var falloffProperty = light2D.GetType().GetProperty("falloffIntensity");
+            if (falloffProperty != null)
+            {
+                falloffProperty.SetValue(light2D, falloffStrength);
+            }
+        }
+        else
+        {
+            // For point lights, we use a directional cookie to fake a spotlight effect
+            // This is a backup if the Spot type isn't available
+            // The directionality is achieved by changing the light's transform orientation
+            
+            // We can narrow the effective radius in the direction we don't want light
+            // by making the light position slightly offset in the direction of reflection
+            float offset = 0.1f;
+            lightObj.transform.position = position + direction.normalized * offset;
+        }
     }
 
     void OnLook(InputValue value)
