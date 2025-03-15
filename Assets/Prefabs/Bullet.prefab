@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7332831663132461203}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -178,4 +178,4 @@ MonoBehaviour:
   bulletSpeed: 5
   rb: {fileID: 7729487658796098283}
   maxBounces: 3
-  scoreBoard: {fileID: 651913353186556234, guid: a34981270c3f817478edff2b9c4430af, type: 3}
+  isActive: 0

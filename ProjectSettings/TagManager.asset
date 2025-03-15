@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Reflective
+  - ScoreBoard
+  - Bullet
   layers:
   - Default
   - TransparentFX
