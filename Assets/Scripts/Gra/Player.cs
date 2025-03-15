@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public PlayerInput playerInput;
     public GameObject bullet;
-    public float bulletSpeed = 1;
+    private float bulletSpeed;
     private Vector2 look;
     public int hp = 100;
     public float parryColdown = 5f;
@@ -30,8 +30,6 @@ public class Player : MonoBehaviour
         float phiRad = Mathf.Atan2(endPosition.y - playerXY.y, endPosition.x - playerXY.x);
         float phi = phiRad * (180 / Mathf.PI);
         GameObject newBullet = Instantiate(bullet, playerXY, Quaternion.Euler(0, 0, phi));
-        Debug.Log(playerXY.x + " " + playerXY.y + " " + endPosition.x + " " + endPosition.y);
-        Debug.Log(phi);
         newBullet.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(bulletSpeed * Mathf.Cos(phiRad), bulletSpeed * Mathf.Sin(phiRad));
     }
     
@@ -42,6 +40,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         playerInput = GetComponent<PlayerInput>();
+        bulletSpeed = bullet.GetComponent<BulletScript>().bulletSpeed;
     }
 
     // Update is called once per frame
