@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public GameObject bullet;
     private float bulletSpeed;
     public int hp = 5;
+    public int index = 1;
     public float parryColdown = 5f;
     public Zycie zycie;
     public bool paused = false;

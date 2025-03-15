@@ -51,7 +51,7 @@ public class ScoreBoardScript : MonoBehaviour, healthEvent
     public void onDeath(GameObject player)
     {
         // Extract the player index from the player's name (assuming name format is "Player1" or "Player2")
-        int playerIndex = int.Parse(player.name.Split(" ").Last());  // Converts "Player1" -> 0, "Player2" -> 1
+        int playerIndex = player.GetComponent<Player>().index;  // Converts "Player1" -> 0, "Player2" -> 1
 
         // Increase the score of the other player
         playerScores[(playerIndex + 1) % 2]++; // If player 1 dies (index 0), increase player 2's score (index 1), and vice versa
