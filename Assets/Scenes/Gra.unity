@@ -899,6 +899,30 @@ PrefabInstance:
       value: 85
       objectReference: {fileID: 0}
     - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
+      propertyPath: rayColor.b
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
+      propertyPath: rayColor.g
+      value: 0.96862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
+      propertyPath: intensityDecay
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
+      propertyPath: maxRayDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
+      propertyPath: reflectionIntensity
+      value: 0.355
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
+      propertyPath: reflectionRandomness
+      value: 0.023
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
       propertyPath: reflectiveSurfaces.m_Bits
       value: 64
       objectReference: {fileID: 0}
@@ -985,6 +1009,30 @@ PrefabInstance:
     - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
       propertyPath: raySpread
       value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
+      propertyPath: rayColor.b
+      value: 0.5882353
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
+      propertyPath: rayColor.g
+      value: 0.96862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
+      propertyPath: intensityDecay
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
+      propertyPath: maxRayDistance
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
+      propertyPath: reflectionIntensity
+      value: 0.355
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
+      propertyPath: reflectionRandomness
+      value: 0.023
       objectReference: {fileID: 0}
     - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
       propertyPath: reflectiveSurfaces.m_Bits
