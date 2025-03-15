@@ -138,10 +138,10 @@ MonoBehaviour:
   baseIntensity: 1.2
   intensityDecay: 0.635
   spotAngle: 45
-  shadowStrength: 1
   falloffStrength: 0.3
   nonAdditiveLighting: 1
   volumetricIntensity: 0
+  shadowStrength: 1
 --- !u!114 &377352189172614540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +158,20 @@ MonoBehaviour:
   LastDirection: 0
   _isMoving: 0
   _isMovementEnabled: 1
-  stepIntenisty: 0.3
+  stepIntensity: 0.3
+  movementAnimations:
+  - {fileID: 7400000, guid: 36c50c773aa1d5d41b99c94a8eaaa9c3, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  idleSprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  useDirectAnimations: 0
 --- !u!50 &3549816725592504299
 Rigidbody2D:
   serializedVersion: 5
