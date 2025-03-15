@@ -44,6 +44,9 @@ public class LightFollow : MonoBehaviour
     [Range(0f, 1f)]
     public float volumetricIntensity = 0.0f;
     
+    [Range(0f, 1f)]
+    public float shadowStrength = 1.0f;
+    
     private Vector2 look;
     private Vector2 _movementInput;
     private Light2D flashlight;
@@ -146,42 +149,8 @@ public class LightFollow : MonoBehaviour
             // Try to set non-additive behavior
             SetNonAdditiveBehavior(light2D);
             
-            // Try to configure spotlight if available
-            bool spotlightSupported = false;
-            
-            // Check if Spot light type is available
-            if (System.Enum.IsDefined(typeof(Light2D.LightType), "Spot"))
-            {
-                try
-                {
-                    light2D.lightType = (Light2D.LightType)System.Enum.Parse(typeof(Light2D.LightType), "Spot");
-                    spotlightSupported = true;
-                    
-                    // Try to set spot angle properties if they exist
-                    var spotAngleProperty = light2D.GetType().GetProperty("innerSpotAngle");
-                    if (spotAngleProperty != null)
-                    {
-                        spotAngleProperty.SetValue(light2D, spotAngle * 0.7f);
-                    }
-                    
-                    spotAngleProperty = light2D.GetType().GetProperty("spotAngle");
-                    if (spotAngleProperty != null)
-                    {
-                        spotAngleProperty.SetValue(light2D, spotAngle);
-                    }
-                }
-                catch
-                {
-                    Debug.LogWarning("Failed to configure Spot light type, falling back to Point light");
-                    spotlightSupported = false;
-                }
-            }
-            
-            // If spotlight isn't supported, use a point light with narrow radius
-            if (!spotlightSupported)
-            {
-                light2D.lightType = Light2D.LightType.Point;
-            }
+            // set spot angle
+            light2D.
             
             // Configure light properties
             light2D.color = mainLightColor;  // Start with white
@@ -405,6 +374,8 @@ public class LightFollow : MonoBehaviour
         // Set light properties
         light2D.color = lightColor;
         light2D.intensity = intensity;
+
+        light2D.shadowIntensity = shadowStrength;
         
         // Scale radius slightly based on distance
         float baseRadius = maxRayDistance * 0.4f;
