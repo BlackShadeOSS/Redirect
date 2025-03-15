@@ -55,7 +55,7 @@ public class Movement : MonoBehaviour
         if (!_isMovementEnabled) return;
         
         _rigidbody.linearVelocity = _movementInput * _moveSpeed;
-        int newDirection = GetDirection(_movementInput);
+        int newDirection = GetDirection(_movementInput * new Vector2(-1.0f, 1.0f));
         
         // Only update animation if direction changed or movement state changed
         if (newDirection != LastDirection || _isMoving != (_movementInput != Vector2.zero))
