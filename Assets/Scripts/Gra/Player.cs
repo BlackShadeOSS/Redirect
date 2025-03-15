@@ -3,6 +3,7 @@ using Unity.Mathematics.Geometry;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Player : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour
     public float parryColdown = 5f;
     public Zycie zycie;
     public bool paused = false;
+    public ScoreBoardScript scoreBoard;
     
     private LookingDirection _lookingDirection;
     
@@ -25,8 +27,8 @@ public class Player : MonoBehaviour
         Quaternion q = _lookingDirection.GetPlayerRotation();
         GameObject newBullet = Instantiate(bullet, playerXY, q);
         float rad = q.eulerAngles.z * Mathf.Deg2Rad;
-        newBullet.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(bulletSpeed * Mathf.Cos(rad), bulletSpeed * Mathf.Sin(rad));
-        paused = true;
+        newBullet.GetComponent<Rigidbody2D>().linearVelocity =
+            new Vector2(bulletSpeed * Mathf.Cos(rad), bulletSpeed * Mathf.Sin(rad));
         StartCoroutine(RespawnPlayer());
     }
 
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour
     }
     private IEnumerator RespawnPlayer()
     {
+        paused = true;
         yield return new WaitForSeconds(0.5f);
         unPause();
     }
@@ -60,6 +63,8 @@ public class Player : MonoBehaviour
         bulletSpeed = bullet.GetComponent<BulletScript>().bulletSpeed;
         _lookingDirection = GetComponent<LookingDirection>();
         zycie = GetComponent<Zycie>();
+        unPause();
+        
     }
 
     // Update is called once per frame

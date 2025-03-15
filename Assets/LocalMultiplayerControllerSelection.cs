@@ -43,7 +43,7 @@ public class LocalMultiplayerControllerSelection : MonoBehaviour
     {
         InputSystem.onDeviceChange += OnDeviceChange;
         SelectedDevices = new InputDevice[playerToggleGroups.Length];
-        UpdateToggleGroupOptions(); // Initialize the list on enable
+        UpdateInputDeviceList(); // Initialize the list on enable
     }
 
     private void OnDisable()

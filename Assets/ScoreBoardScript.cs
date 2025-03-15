@@ -115,7 +115,7 @@ public class ScoreBoardScript : MonoBehaviour, healthEvent
     }
 
     // Coroutine to respawn the player after a delay
-    private IEnumerator RespawnPlayer(GameObject player, int playerIndex)
+    public IEnumerator RespawnPlayer(GameObject player, int playerIndex)
     {
         yield return new WaitForSeconds(respawnDelay);  // Wait for the respawn delay
 
