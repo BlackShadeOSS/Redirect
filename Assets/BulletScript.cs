@@ -23,7 +23,7 @@ public class BulletScript : MonoBehaviour
             
             GameObject particleEffect = Instantiate(particleEffectPrefab, this.transform.position, Quaternion.identity);
             
-            Destroy(particleEffect, 20.7f);
+            Destroy(particleEffect, 0.7f);
             
             if (bounces == maxBounces)
             {
@@ -44,7 +44,6 @@ public class BulletScript : MonoBehaviour
     
     void Start()
     {
-        particleEffectPrefab = GameObject.Find("Particles");
     }
 
     // Update is called once per frame
