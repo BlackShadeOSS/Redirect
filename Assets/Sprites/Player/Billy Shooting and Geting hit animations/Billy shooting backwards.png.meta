@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Billy shooting backwards_0: -5171963214939508223
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
