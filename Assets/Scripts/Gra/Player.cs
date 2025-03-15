@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
         Quaternion q = _lookingDirection.GetPlayerRotation();
         GameObject newBullet = Instantiate(bullet, playerXY, q);
         float rad = q.eulerAngles.z * Mathf.Deg2Rad;
-        newBullet.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(bulletSpeed * Mathf.Cos(rad), bulletSpeed * Mathf.Sin(rad));
+        newBullet.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(-bulletSpeed * Mathf.Cos(rad), -bulletSpeed * Mathf.Sin(rad));
         Debug.Log("Jesok: " + q.z);
     }
     
