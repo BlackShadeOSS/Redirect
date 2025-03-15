@@ -16,24 +16,25 @@ public class LightFollow : MonoBehaviour
     public int rayCount = 3;
     public float raySpread = 15f;
     public float maxRayDistance = 10f;
-    [Range(1, 3)]
-    public int maxBounces = 2;
-    public Color rayColor = Color.white;
+    [HideInInspector] // Ray lasers are now hidden
     public float rayWidth = 0.05f;
+    
+    // Fix max bounces at 2
+    [SerializeField]
+    private int maxBounces = 2;
+    
+    public Color rayColor = Color.yellow;
     
     // Realistic light parameters
     [Range(0.1f, 1.0f)]
     public float reflectionIntensity = 0.6f;
     [Range(0.5f, 0.9f)]
     public float intensityDecay = 0.7f;
-    [Range(0.0f, 0.2f)]
-    public float reflectionRandomness = 0.05f;
     public bool useColorShift = true;
     public float colorShiftAmount = 0.1f;
     
     private Vector2 look;
     private Vector2 _movementInput;
-    private List<LineRenderer> rayLines = new List<LineRenderer>();
     private Light2D flashlight;
     private List<GameObject> reflectionLights = new List<GameObject>();
     
@@ -44,6 +45,9 @@ public class LightFollow : MonoBehaviour
 
     void Start()
     {
+        // Enforce max bounces of 2
+        maxBounces = Mathf.Min(maxBounces, 2);
+        
         // Get flashlight component
         flashlight = LightToRotate.GetComponentInChildren<Light2D>();
         if (flashlight == null)
@@ -52,9 +56,6 @@ public class LightFollow : MonoBehaviour
         }
         
         _lookingDirection = GetComponent<LookingDirection>();
-        
-        // Create line renderers for each ray
-        CreateRayRenderers();
         
         // Initialize reflection lights
         CreateReflectionLights();
@@ -80,36 +81,6 @@ public class LightFollow : MonoBehaviour
                 lastHitPositions[i][j] = new Vector3(-9999, -9999, -9999);
                 hitActiveStatus[i][j] = false;
             }
-        }
-    }
-
-    private void CreateRayRenderers()
-    {
-        // Clear previous ray renderers
-        foreach (var line in rayLines)
-        {
-            if (line != null)
-                Destroy(line.gameObject);
-        }
-        rayLines.Clear();
-        
-        for (int i = 0; i < rayCount; i++)
-        {
-            GameObject rayObj = new GameObject($"FlashlightRay_{i}");
-            rayObj.transform.SetParent(transform);
-            
-            LineRenderer line = rayObj.AddComponent<LineRenderer>();
-            line.positionCount = maxBounces + 2; // Start point + max bounces + end point
-            line.startWidth = rayWidth;
-            line.endWidth = rayWidth * 0.5f;
-            
-            // Set material and color
-            line.material = new Material(Shader.Find("Sprites/Default"));
-            line.startColor = rayColor;
-            line.endColor = new Color(rayColor.r, rayColor.g, rayColor.b, 0.2f);
-            
-            line.enabled = false;
-            rayLines.Add(line);
         }
     }
 
@@ -166,15 +137,9 @@ public class LightFollow : MonoBehaviour
 
     void CastRays()
     {
-        // If flashlight is off, disable all rays and reflection lights
+        // If flashlight is off, disable all reflection lights
         if (flashlight != null && !flashlight.enabled)
         {
-            foreach (var line in rayLines)
-            {
-                if (line != null)
-                    line.enabled = false;
-            }
-            
             // Disable all reflection lights
             foreach (var lightObj in reflectionLights)
             {
@@ -217,16 +182,12 @@ public class LightFollow : MonoBehaviour
             float angle = startAngle + i * angleStep;
             Vector3 rayDirection = Quaternion.Euler(0, 0, angle) * baseDirection;
             
-            // Track ray positions for line renderer
-            List<Vector3> rayPositions = new List<Vector3>();
-            rayPositions.Add(rayOrigin);
-            
             Vector3 currentOrigin = rayOrigin;
             Vector3 currentDirection = rayDirection;
             Color currentColor = rayColor;
             float currentIntensity = reflectionIntensity;
             
-            // Calculate bounces
+            // Calculate bounces - max of 2
             for (int bounce = 0; bounce < maxBounces; bounce++)
             {
                 RaycastHit2D hit = Physics2D.Raycast(currentOrigin, currentDirection, maxRayDistance, reflectiveSurfaces);
@@ -235,7 +196,6 @@ public class LightFollow : MonoBehaviour
                 {
                     // We hit something
                     Vector3 hitPoint = hit.point;
-                    rayPositions.Add(hitPoint);
                     
                     // Mark this hit as active
                     currentHitActive[i, bounce] = true;
@@ -253,23 +213,8 @@ public class LightFollow : MonoBehaviour
                         // Update light position and properties
                         if (lightIndex < reflectionLights.Count)
                         {
-                            // Calculate reflection with slight randomness for realism
+                            // Calculate reflection (no randomness)
                             Vector3 reflectionDirection = Vector3.Reflect(currentDirection, hit.normal);
-                            
-                            // Add randomness (but keep it consistent per hit point)
-                            if (reflectionRandomness > 0)
-                            {
-                                // Use a consistent seed based on position to avoid jitter
-                                int seed = Mathf.FloorToInt(hitPoint.x * 1000) + Mathf.FloorToInt(hitPoint.y * 1000);
-                                Random.InitState(seed);
-                                
-                                reflectionDirection += new Vector3(
-                                    Random.Range(-reflectionRandomness, reflectionRandomness),
-                                    Random.Range(-reflectionRandomness, reflectionRandomness),
-                                    0
-                                );
-                                reflectionDirection.Normalize();
-                            }
                             
                             // Decrease intensity with each bounce
                             float bounceIntensity = reflectionIntensity;
@@ -325,11 +270,7 @@ public class LightFollow : MonoBehaviour
                 }
                 else
                 {
-                    // Ray didn't hit - extend to max distance
-                    Vector3 endPoint = currentOrigin + currentDirection * maxRayDistance;
-                    rayPositions.Add(endPoint);
-                    
-                    // Mark this bounce as inactive
+                    // Ray didn't hit - mark this bounce as inactive
                     currentHitActive[i, bounce] = false;
                     
                     // Disable the corresponding light if it was previously active
@@ -348,33 +289,6 @@ public class LightFollow : MonoBehaviour
                     
                     break;
                 }
-            }
-            
-            // Update line renderer
-            if (i < rayLines.Count)
-            {
-                LineRenderer line = rayLines[i];
-                
-                line.enabled = true;
-                line.positionCount = rayPositions.Count;
-                
-                for (int p = 0; p < rayPositions.Count; p++)
-                {
-                    line.SetPosition(p, rayPositions[p]);
-                }
-                
-                // Set gradient based on distance
-                Gradient gradient = new Gradient();
-                GradientColorKey[] colorKeys = new GradientColorKey[2];
-                colorKeys[0] = new GradientColorKey(rayColor, 0);
-                colorKeys[1] = new GradientColorKey(rayColor, 1);
-                
-                GradientAlphaKey[] alphaKeys = new GradientAlphaKey[2];
-                alphaKeys[0] = new GradientAlphaKey(0.8f, 0);
-                alphaKeys[1] = new GradientAlphaKey(0.2f, 1);
-                
-                gradient.SetKeys(colorKeys, alphaKeys);
-                line.colorGradient = gradient;
             }
         }
         
