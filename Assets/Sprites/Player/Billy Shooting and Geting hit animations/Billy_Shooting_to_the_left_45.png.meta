@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8f9329663f7626e6bac67eee6abf2829
+guid: 848a0e4aee25dadd5ac10e531ec248a7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6961198153173988155
-    second: Billy Shooting to the Right 45_0
+      213: 3879328188369067801
+    second: Billy_Shooting_to_the_left_45_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,10 +100,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Billy Shooting to the Right 45_0
+      name: Billy_Shooting_to_the_left_45_0
       rect:
         serializedVersion: 2
-        x: 7
+        x: 4
         y: 0
         width: 21
         height: 32
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5cc85f4692bd46f90800000000000000
-      internalID: -6961198153173988155
+      spriteID: 91fd5ea0f6426d530800000000000000
+      internalID: 3879328188369067801
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Billy Shooting to the Right 45_0: -6961198153173988155
+      Billy_Shooting_to_the_left_45_0: 3879328188369067801
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
