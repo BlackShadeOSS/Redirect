@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     
     public void OnFire(InputValue value)
     {   
+        Debug.Log("fireFIEIREIF");
         if (paused) return;
         Vector2 playerXY = transform.position;
         Quaternion q = _lookingDirection.GetPlayerRotation();

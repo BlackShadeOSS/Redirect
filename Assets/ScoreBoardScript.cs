@@ -35,6 +35,9 @@ public class ScoreBoardScript : MonoBehaviour, healthEvent
 
     // Respawn delay in seconds
     public float respawnDelay = 2f;
+    
+    public GameObject player;
+    public GameObject player2;
 
     void Start()
     {
@@ -102,6 +105,18 @@ public class ScoreBoardScript : MonoBehaviour, healthEvent
         // Show the end game panel
         endGamePanel.SetActive(true);
         endGameText.text = winner;  // Display the winner's message
+        
+        player.GetComponent<Player>().paused = true;
+        player.GetComponent<Movement>().paused = true;
+        player2.GetComponent<Player>().paused = true;
+        player2.GetComponent<Movement>().paused = true;
+        StartCoroutine(exitOO());
+    }
+
+    public IEnumerator exitOO()
+    {
+        yield return new WaitForSeconds(5); 
+        Application.Quit();
     }
 
     // Method to clean up all bullets in the scene
