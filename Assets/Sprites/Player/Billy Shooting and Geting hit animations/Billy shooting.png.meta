@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Billy shooting_0: -8063593827413008950
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
