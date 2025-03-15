@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a6a784030c87a07a39ddd2349667a5ac
+guid: 0ef189f5249f9df48b4d70d7d0cf3ab5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6827691179188477145
-    second: Sid Shooting_0
+      213: 195553141033492505
+    second: Rubble_Particle_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,12 +100,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sid Shooting_0
+      name: Rubble_Particle_0
       rect:
         serializedVersion: 2
-        x: 7
+        x: 0
         y: 0
-        width: 18
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9dcd89be3f4d0ce50800000000000000
-      internalID: 6827691179188477145
+      spriteID: 9106302bb8eb6b200800000000000000
+      internalID: 195553141033492505
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Sid Shooting_0: 6827691179188477145
+      Rubble_Particle_0: 195553141033492505
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

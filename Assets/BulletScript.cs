@@ -13,11 +13,18 @@ public class BulletScript : MonoBehaviour
     public bool isActive = false;
     public AudioSource audio;
     
+    public GameObject particleEffectPrefab;
+    
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.name == "sciany" || collider.gameObject.name == "lustra")
         {   
             audio.Play();
+            
+            GameObject particleEffect = Instantiate(particleEffectPrefab, this.transform.position, Quaternion.identity);
+            
+            Destroy(particleEffect, 0.7f);
+            
             if (bounces == maxBounces)
             {
                 Destroy(this.gameObject);
@@ -37,7 +44,6 @@ public class BulletScript : MonoBehaviour
     
     void Start()
     {
-
     }
 
     // Update is called once per frame
