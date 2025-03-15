@@ -39,8 +39,8 @@ public class ScoreBoardScript : MonoBehaviour, healthEvent
     void Start()
     {
         // Initialize starting positions
-        P1StartingPosition = P1.transform.position;
-        P2StartingPosition = P2.transform.position;
+        P1StartingPosition = new Vector3(0, -20, 0);
+        P2StartingPosition = new Vector3(0, 20, 0);
 
         eventRegistry.addHealthEvent(this);
         UpdateScoreDisplay();  // Update the UI on start

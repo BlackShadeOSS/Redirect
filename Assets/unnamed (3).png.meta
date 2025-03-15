@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0ef189f5249f9df48b4d70d7d0cf3ab5
+guid: 60a166b08048ae94eb391401fe08241e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 195553141033492505
-    second: Rubble_Particle_0
+      213: -2333879159351157394
+    second: unnamed (3)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 32
+    maxTextureSize: 2048
     resizeAlgorithm: 1
     textureFormat: 4
     textureCompression: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Rubble_Particle_0
+      name: unnamed (3)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 6
+        y: 9
+        width: 22
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9106302bb8eb6b200800000000000000
-      internalID: 195553141033492505
+      spriteID: e6ddf2e15456c9fd0800000000000000
+      internalID: -2333879159351157394
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Rubble_Particle_0: 195553141033492505
+      unnamed (3)_0: -2333879159351157394
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
