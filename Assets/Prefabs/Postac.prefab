@@ -159,19 +159,26 @@ MonoBehaviour:
   _isMoving: 0
   _isMovementEnabled: 1
   stepIntensity: 0.3
-  movementAnimations:
-  - {fileID: 7400000, guid: 36c50c773aa1d5d41b99c94a8eaaa9c3, type: 2}
-  - {fileID: 7400000, guid: 4941c83c544d78d4da5d1d8ea02994e9, type: 2}
-  - {fileID: 7400000, guid: 1855ba9f12983ea4bbc6c1dc1b7b7b70, type: 2}
-  - {fileID: 7400000, guid: d1dbeedc43e27d04080c817d98fb3878, type: 2}
-  - {fileID: 7400000, guid: eda3923d4cd47214c944bae9a6182aa8, type: 2}
+  spriteChildObject: {fileID: 4197804266441291059}
   idleSprites:
   - {fileID: -8774619837040367957, guid: bf84a3626f10fc658bff56745926059f, type: 3}
   - {fileID: 5886597821160666012, guid: 9e3f515321555c09da7de5595c2528e7, type: 3}
   - {fileID: -6481092473165741085, guid: e4485e726bdcc00858399dbf48b92958, type: 3}
   - {fileID: 4912600045298120074, guid: 7c6c345f283b1156e992edfdc638d651, type: 3}
   - {fileID: -3204031014198847521, guid: 4d099dd0820e733298347cb4ee4c9f13, type: 3}
-  useDirectAnimations: 0
+  frameOneSprites:
+  - {fileID: -7865026673827263602, guid: e001e2255053380e4900dfadffe95561, type: 3}
+  - {fileID: -7853348311063973358, guid: 6d3257bc18896bd7eb4e5bb7ebf79df0, type: 3}
+  - {fileID: 1530942774277910364, guid: fc03faa902218e71786f597c563c7d87, type: 3}
+  - {fileID: 4040273334166266316, guid: 53da760f1b52dcc6aaaf56d1c139442e, type: 3}
+  - {fileID: -8102020229546124538, guid: 6403d6bb15896ed2aa50ac3d62799515, type: 3}
+  frameTwoSprites:
+  - {fileID: 8965823808585551496, guid: b5259d438d26b0dcd8220cffc29f8d54, type: 3}
+  - {fileID: -1434901088602296064, guid: 00680dd6ba96b64ac8dfb2078385bc4b, type: 3}
+  - {fileID: -7129980929314615554, guid: 8fdad1b99a5d33cc6a72e74a7e414726, type: 3}
+  - {fileID: 8353777256332750223, guid: 464878f288cc26a2481d2e817fd78fed, type: 3}
+  - {fileID: -3075145470733993429, guid: b4274638666595a9295ff391431b2448, type: 3}
+  animationFrameRate: 8
 --- !u!50 &3549816725592504299
 Rigidbody2D:
   serializedVersion: 5
