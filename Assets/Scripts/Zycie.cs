@@ -23,7 +23,7 @@ public class Zycie : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
-        _eventRegistry.healthEventOnHit(damage);
+        _eventRegistry.healthEventOnHit(gameObject, damage);
         checkHealth();
     }
 
@@ -37,7 +37,7 @@ public class Zycie : MonoBehaviour
         if (health <= 0)
         {
             this._isDead = true;
-            _eventRegistry.healthEventOnDeath();
+            _eventRegistry.healthEventOnDeath(gameObject);
         }
     }
     

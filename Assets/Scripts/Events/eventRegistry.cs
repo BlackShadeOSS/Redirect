@@ -18,19 +18,19 @@ namespace Events
             healthEventListeners.Remove(e);
         }
 
-        public void healthEventOnHit(float damage)
+        public void healthEventOnHit(GameObject player, float damage)
         {
             foreach (var _healthEvent in healthEventListeners)
             {
-                _healthEvent.onHit(damage);
+                _healthEvent.onHit(player, damage);
             }
         }
 
-        public void healthEventOnDeath()
+        public void healthEventOnDeath(GameObject player)
         {
             foreach (var _healthEvent in healthEventListeners)
             {
-                _healthEvent.onDeath();
+                _healthEvent.onDeath(player);
             }
         }
     }
