@@ -177,3 +177,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 5
   rb: {fileID: 7729487658796098283}
+  maxBounces: 3
+  scoreBoard: {fileID: 651913353186556234, guid: a34981270c3f817478edff2b9c4430af, type: 3}
