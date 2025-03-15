@@ -29,6 +29,7 @@ public class Zycie : MonoBehaviour
     {
         return _isDead;
     }
+    
 
     private void checkHealth()
     {
