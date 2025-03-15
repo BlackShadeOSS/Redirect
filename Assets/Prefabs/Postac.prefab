@@ -112,6 +112,15 @@ MonoBehaviour:
   LightToRotate: {fileID: 1844545119718306250}
   angleOffset: -90
   rotationSmoothTime: 20
+  reflectiveSurfaces:
+    serializedVersion: 2
+    m_Bits: 64
+  rayCount: 5
+  raySpread: 15
+  maxRayDistance: 15.31
+  maxBounces: 3
+  rayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  rayWidth: 0.05
 --- !u!114 &377352189172614540
 MonoBehaviour:
   m_ObjectHideFlags: 0
