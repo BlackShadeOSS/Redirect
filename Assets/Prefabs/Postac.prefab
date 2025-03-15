@@ -130,7 +130,7 @@ MonoBehaviour:
     m_Bits: 64
   rayCount: 7
   raySpread: 83.8
-  maxRayDistance: 11.38
+  maxRayDistance: 9.2
   rayWidth: 0.05
   showDebugRays: 1
   debugRayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}

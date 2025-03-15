@@ -27,7 +27,7 @@ public class LightFollow : MonoBehaviour
 
     // Fix max bounces at 2
     [SerializeField]
-    public int maxBounces = 5;
+    public int maxBounces = 3;
 
     // Light color and intensity
     public Color mainLightColor = Color.white;
