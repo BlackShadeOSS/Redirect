@@ -47,8 +47,12 @@ public class LookingDirection : MonoBehaviour
     
         if (_isGamepad)
         {
-            float angle = Mathf.Atan2(lookInput.x, lookInput.y) * Mathf.Rad2Deg;
-            playerRotation = Quaternion.Euler(0, 0, angle);
+            if (lookInput.magnitude > 0.1)
+            {
+                Vector2 ll = value.Get<Vector2>().normalized;
+                float angle = Mathf.Atan2(ll.y, ll.x) * Mathf.Rad2Deg;
+                playerRotation = Quaternion.Euler(0, 0, angle);
+            }
         }
     }
 
