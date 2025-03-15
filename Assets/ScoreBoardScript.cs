@@ -94,7 +94,7 @@ public class ScoreBoardScript : MonoBehaviour, healthEvent
     }
 
     // Method to end the game and display the winner
-    private void EndGame()
+    public void EndGame()
     {
         // Determine the winner
         string winner = playerScores[0] >= pointsToWin ? "Player 1 Wins!" : "Player 2 Wins!";
