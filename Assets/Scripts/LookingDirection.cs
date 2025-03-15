@@ -50,7 +50,8 @@ public class LookingDirection : MonoBehaviour
             if (lookInput.magnitude > 0.1)
             {
                 Vector2 ll = value.Get<Vector2>().normalized;
-                playerRotation = Quaternion.LookRotation(ll);
+                float angle = Mathf.Atan2(ll.y, ll.x) * Mathf.Rad2Deg;
+                playerRotation = Quaternion.Euler(0, 0, angle);
             }
         }
     }
