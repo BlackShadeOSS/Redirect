@@ -253,6 +253,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1233890029482711396, guid: 1cb70d81625e1d21c9020f4cf11044fb, type: 3}
+      propertyPath: m_Intensity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1652602633809252351, guid: 1cb70d81625e1d21c9020f4cf11044fb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.405075
@@ -872,16 +876,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1528062423 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 699359060016357184, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
-  m_PrefabInstance: {fileID: 1822693171}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1567437735 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 699359060016357184, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
-  m_PrefabInstance: {fileID: 2021494033900728219}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1822693171
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -895,29 +889,13 @@ PrefabInstance:
       value: Player 2
       objectReference: {fileID: 0}
     - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
-      propertyPath: raySpread
-      value: 85
-      objectReference: {fileID: 0}
+      propertyPath: playerInput
+      value: 
+      objectReference: {fileID: 2021494033900728220}
     - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
-      propertyPath: rayColor.b
-      value: 0.5882353
-      objectReference: {fileID: 0}
-    - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
-      propertyPath: rayColor.g
-      value: 0.96862745
-      objectReference: {fileID: 0}
-    - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
-      propertyPath: intensityDecay
-      value: 0.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
-      propertyPath: maxRayDistance
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
-      propertyPath: reflectionIntensity
-      value: 0.355
-      objectReference: {fileID: 0}
+      propertyPath: LightToRotate
+      value: 
+      objectReference: {fileID: 2140448531}
     - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
       propertyPath: reflectionRandomness
       value: 0.023
@@ -994,6 +972,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2140448531 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1844545119718306250, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
+  m_PrefabInstance: {fileID: 2021494033900728219}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2021494033900728219
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1007,29 +990,13 @@ PrefabInstance:
       value: Player 1
       objectReference: {fileID: 0}
     - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
-      propertyPath: raySpread
-      value: 85
-      objectReference: {fileID: 0}
+      propertyPath: playerInput
+      value: 
+      objectReference: {fileID: 2021494033900728220}
     - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
-      propertyPath: rayColor.b
-      value: 0.5882353
-      objectReference: {fileID: 0}
-    - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
-      propertyPath: rayColor.g
-      value: 0.96862745
-      objectReference: {fileID: 0}
-    - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
-      propertyPath: intensityDecay
-      value: 0.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
-      propertyPath: maxRayDistance
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
-      propertyPath: reflectionIntensity
-      value: 0.355
-      objectReference: {fileID: 0}
+      propertyPath: LightToRotate
+      value: 
+      objectReference: {fileID: 66863069}
     - target: {fileID: 1044722806164379994, guid: f760c4b2222c23a5db86c1787269a9f0, type: 3}
       propertyPath: reflectionRandomness
       value: 0.023
