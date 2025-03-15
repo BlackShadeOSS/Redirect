@@ -98,6 +98,7 @@ public class Movement : MonoBehaviour, healthEvent
 
     public void hitAnim()
     {
+        if (GetComponent<Zycie>().isDead()) return;
         Debug.Log("hitAnim");
         this.paused = true;
         StartCoroutine(PlayActionAnimation(1, 10));
@@ -107,6 +108,7 @@ public class Movement : MonoBehaviour, healthEvent
     public void unhit()
     {
         Debug.Log("unhit");
+        _spriteRenderer.sprite = idleSprites[4];
         this.paused = false;
     }
 

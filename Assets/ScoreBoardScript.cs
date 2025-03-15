@@ -128,7 +128,9 @@ public class ScoreBoardScript : MonoBehaviour, healthEvent
         {
             player.transform.position = P2StartingPosition;
         }
-
+        
+        player.GetComponent<Zycie>().resetHealth();
+        player.GetComponent<Movement>().unhit();
         player.SetActive(true);  // Re-enable the player object
     }
 }
