@@ -111,6 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   _isDead: 0
+  _eventRegistry: {fileID: 0}
 --- !u!114 &1044722806164379994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,7 +463,7 @@ MonoBehaviour:
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
-  m_OverlapOperation: 0
+  m_OverlapOperation: 1
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
@@ -546,7 +547,7 @@ MonoBehaviour:
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
-  m_OverlapOperation: 0
+  m_OverlapOperation: 1
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0

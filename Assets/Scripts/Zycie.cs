@@ -7,7 +7,6 @@ public class Zycie : MonoBehaviour
     [SerializeField] private const float maxHealth = 5f;
     [SerializeField] private float health = maxHealth;
     [SerializeField] private bool _isDead = false;
-    [SerializeField] private eventRegistry _eventRegistry;
     
     void Start()
     {
@@ -22,7 +21,7 @@ public class Zycie : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
-        _eventRegistry.healthEventOnHit(gameObject, damage);
+        eventRegistry.healthEventOnHit(gameObject, damage);
         checkHealth();
     }
 
@@ -36,7 +35,7 @@ public class Zycie : MonoBehaviour
         if (health <= 0)
         {
             this._isDead = true;
-            _eventRegistry.healthEventOnDeath(gameObject);
+            eventRegistry.healthEventOnDeath(gameObject);
         }
     }
     
