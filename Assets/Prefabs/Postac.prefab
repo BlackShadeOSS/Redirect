@@ -136,19 +136,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce3c7144b9dedb499a96f5d427053438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 8326487724032962144}
-  LightToRotate: {fileID: 1844545119718306250}
+  playerInput: {fileID: 0}
+  LightToRotate: {fileID: 0}
   angleOffset: -90
-  rotationSmoothTime: 20
   reflectiveSurfaces:
     serializedVersion: 2
     m_Bits: 64
   rayCount: 5
-  raySpread: 15
-  maxRayDistance: 15.31
-  maxBounces: 3
-  rayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  raySpread: 85
+  maxRayDistance: 11
   rayWidth: 0.05
+  maxBounces: 2
+  rayColor: {r: 0.9622642, g: 0.94393533, b: 0.72169816, a: 1}
+  reflectionIntensity: 0.653
+  intensityDecay: 0.635
+  useColorShift: 1
+  colorShiftAmount: 0.35
 --- !u!114 &377352189172614540
 MonoBehaviour:
   m_ObjectHideFlags: 0
