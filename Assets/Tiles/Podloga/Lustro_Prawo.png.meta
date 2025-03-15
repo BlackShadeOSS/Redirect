@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 00680dd6ba96b64ac8dfb2078385bc4b
+guid: 79049127e1cfb6c2689792c9969fcb0d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1434901088602296064
-    second: Walking up 45 to left6_0
+      213: -8358980380602376482
+    second: Lustro_Prawo_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,10 +72,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
+    maxTextureSize: 32
+    resizeAlgorithm: 1
+    textureFormat: 4
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,12 +100,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Walking up 45 to left6_0
+      name: Lustro_Prawo_0
       rect:
         serializedVersion: 2
-        x: 5
+        x: 0
         y: 0
-        width: 23
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 001f906ff05361ce0800000000000000
-      internalID: -1434901088602296064
+      spriteID: ede5cb1b1afeefb80800000000000000
+      internalID: -8358980380602376482
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Walking up 45 to left6_0: -1434901088602296064
+      Lustro_Prawo_0: -8358980380602376482
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

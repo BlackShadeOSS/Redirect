@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 00680dd6ba96b64ac8dfb2078385bc4b
+guid: 8ce211e02d1da29d2a4b74b0e5a38e7b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1434901088602296064
-    second: Walking up 45 to left6_0
+      213: 4744514439619868757
+    second: Dwu-stronne_lustra_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -72,10 +72,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
+    maxTextureSize: 32
+    resizeAlgorithm: 1
+    textureFormat: 4
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,12 +100,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Walking up 45 to left6_0
+      name: Dwu-stronne_lustra_0
       rect:
         serializedVersion: 2
-        x: 5
+        x: 0
         y: 0
-        width: 23
+        width: 32
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 001f906ff05361ce0800000000000000
-      internalID: -1434901088602296064
+      spriteID: 558f04dceb6e7d140800000000000000
+      internalID: 4744514439619868757
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Walking up 45 to left6_0: -1434901088602296064
+      Dwu-stronne_lustra_0: 4744514439619868757
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
