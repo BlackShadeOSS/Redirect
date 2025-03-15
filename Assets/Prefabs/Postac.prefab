@@ -132,6 +132,9 @@ MonoBehaviour:
   raySpread: 83.8
   maxRayDistance: 11.38
   rayWidth: 0.05
+  showDebugRays: 1
+  debugRayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  debugRayDuration: 0.5
   maxBounces: 5
   mainLightColor: {r: 1, g: 1, b: 1, a: 0}
   baseIntensity: 0.99
@@ -158,7 +161,6 @@ MonoBehaviour:
   _isMoving: 0
   _isMovementEnabled: 1
   stepIntensity: 0.3
-  spriteChildObject: {fileID: 0}
   idleSprites:
   - {fileID: -8774619837040367957, guid: bf84a3626f10fc658bff56745926059f, type: 3}
   - {fileID: 5886597821160666012, guid: 9e3f515321555c09da7de5595c2528e7, type: 3}
