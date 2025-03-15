@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Events;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Movement : MonoBehaviour
+public class Movement : MonoBehaviour, healthEvent
 {
     [SerializeField] private float _moveSpeed = 5.0f;
     [SerializeField] public int LastDirection = 0;
@@ -33,11 +34,14 @@ public class Movement : MonoBehaviour
     private float lastStepTime = 0;
     private bool _facingRight = false;
     private int _currentDirectionIndex = 0;
+    
+    public bool paused = false;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        eventRegistry.addHealthEvent(this);
     }
 
     private void Update()
@@ -57,7 +61,7 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!_isMovementEnabled) return;
+        if (!_isMovementEnabled || paused) return;
 
         _rigidbody.linearVelocity = _movementInput * _moveSpeed;
         int newDirection = GetDirection(_movementInput * new Vector2(-1.0f, 1.0f));
@@ -87,6 +91,29 @@ public class Movement : MonoBehaviour
         }
     }
 
+    public void onHit(GameObject player, float damage)
+    {
+        player.GetComponent<Movement>().hitAnim();
+    }
+
+    public void hitAnim()
+    {
+        Debug.Log("hitAnim");
+        this.paused = true;
+        StartCoroutine(PlayActionAnimation(1, 10));
+    }
+
+
+    public void unhit()
+    {
+        Debug.Log("unhit");
+        this.paused = false;
+    }
+
+    public void onDeath(GameObject player)
+    {
+        
+    }
     private void OnMove(InputValue value)
     {
         _movementInput = value.Get<Vector2>();
@@ -226,13 +253,15 @@ public class Movement : MonoBehaviour
         {
             _spriteRenderer.sprite = actionSprites[spriteIndex];
         }
-
+        
         // Wait for the specified number of frames
         for (int i = 0; i < durationFrames; i++)
         {
+            // Debug.Log("cekom:"+i);
             yield return new WaitForFixedUpdate();
         }
-
+        
+        
         // Return to normal animation
         _isPlayingActionAnimation = false;
 
@@ -244,6 +273,7 @@ public class Movement : MonoBehaviour
 
         // Update sprite back to normal state
         UpdateSprite();
+        unhit();
     }
 
     public bool IsMoving()

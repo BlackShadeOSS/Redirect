@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8f9329663f7626e6bac67eee6abf2829
+guid: a6a784030c87a07a39ddd2349667a5ac
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6961198153173988155
-    second: Billy Shooting to the Right 45_0
+      213: 6827691179188477145
+    second: Sid Shooting_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,9 +72,9 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 32
-    resizeAlgorithm: 1
-    textureFormat: 4
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -100,12 +100,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Billy Shooting to the Right 45_0
+      name: Sid Shooting_0
       rect:
         serializedVersion: 2
         x: 7
         y: 0
-        width: 21
+        width: 18
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5cc85f4692bd46f90800000000000000
-      internalID: -6961198153173988155
+      spriteID: 9dcd89be3f4d0ce50800000000000000
+      internalID: 6827691179188477145
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Billy Shooting to the Right 45_0: -6961198153173988155
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
