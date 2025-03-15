@@ -11,7 +11,6 @@ public class Zycie : MonoBehaviour
     
     void Start()
     {
-        _eventRegistry = GetComponent<eventRegistry>();
     }
 
     public void resetHealth()
