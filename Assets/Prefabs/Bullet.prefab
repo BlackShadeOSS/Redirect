@@ -60,9 +60,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!212 &810411675981332272
 SpriteRenderer:
@@ -177,9 +177,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18c534399cc088d479d523c75c3b73f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 15.97
+  bulletSpeed: 18.5
   rb: {fileID: 7729487658796098283}
-  maxBounces: 3
+  maxBounces: 6
   isActive: 0
   audio: {fileID: 3670863840901938548}
 --- !u!82 &3670863840901938548
@@ -327,7 +327,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.943853, b: 0.7783019, a: 1}
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
@@ -342,7 +342,7 @@ MonoBehaviour:
   m_UseNormalMap: 0
   m_ShadowsEnabled: 1
   m_ShadowIntensity: 1
-  m_ShadowSoftness: 0.3
+  m_ShadowSoftness: 0.422
   m_ShadowSoftnessFalloffIntensity: 0.5
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
@@ -352,7 +352,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 0.99
+  m_PointLightOuterRadius: 2.35
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1

@@ -12,11 +12,13 @@ public class Player : MonoBehaviour
     public int hp = 5;
     public float parryColdown = 5f;
     public Zycie zycie;
+    public bool paused = false;
     
     private LookingDirection _lookingDirection;
     
     public void OnFire(InputValue value)
     {   
+        if (paused) return;
         Vector2 playerXY = transform.position;
         Quaternion q = _lookingDirection.GetPlayerRotation();
         GameObject newBullet = Instantiate(bullet, playerXY, q);
