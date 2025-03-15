@@ -89,8 +89,8 @@ public class ScoreBoardScript : MonoBehaviour, healthEvent
     // Method to update the score display in the UI
     private void UpdateScoreDisplay()
     {
-        Player1Score.text = "Player 1 Score: " + playerScores[0].ToString();  // Update Player 1's score display
-        Player2Score.text = "Player 2 Score: " + playerScores[1].ToString();  // Update Player 2's score display
+        Player1Score.text = playerScores[0].ToString();  // Update Player 1's score display
+        Player2Score.text = playerScores[1].ToString();  // Update Player 2's score display
     }
 
     // Method to end the game and display the winner
