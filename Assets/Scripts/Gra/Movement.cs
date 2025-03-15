@@ -117,6 +117,7 @@ public class Movement : MonoBehaviour, healthEvent
         Debug.Log("unhit");
         _spriteRenderer.sprite = idleSprites[4];
         this.paused = false;
+        _isPlayingActionAnimation = false;
     }
 
     public void onDeath(GameObject player)
