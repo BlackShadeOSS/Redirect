@@ -2,6 +2,7 @@ using System;
 using Unity.Mathematics.Geometry;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -25,6 +26,18 @@ public class Player : MonoBehaviour
         GameObject newBullet = Instantiate(bullet, playerXY, q);
         float rad = q.eulerAngles.z * Mathf.Deg2Rad;
         newBullet.GetComponent<Rigidbody2D>().linearVelocity = new Vector2(bulletSpeed * Mathf.Cos(rad), bulletSpeed * Mathf.Sin(rad));
+        paused = true;
+        StartCoroutine(RespawnPlayer());
+    }
+
+    public void unPause()
+    {
+        paused = false;
+    }
+    private IEnumerator RespawnPlayer()
+    {
+        yield return new WaitForSeconds(0.5f);
+        unPause();
     }
 
     public void OnTriggerEnter2D(Collider2D collider)

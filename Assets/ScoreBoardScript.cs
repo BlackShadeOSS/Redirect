@@ -54,7 +54,7 @@ public class ScoreBoardScript : MonoBehaviour, healthEvent
         int playerIndex = player.GetComponent<Player>().index;  // Converts "Player1" -> 0, "Player2" -> 1
 
         // Increase the score of the other player
-        playerScores[(playerIndex + 1) % 2]++; // If player 1 dies (index 0), increase player 2's score (index 1), and vice versa
+        playerScores[(playerIndex + 2) % 2]++; // If player 1 dies (index 0), increase player 2's score (index 1), and vice versa
 
         UpdateScoreDisplay();  // Update the score display UI after a score change
 
@@ -120,7 +120,7 @@ public class ScoreBoardScript : MonoBehaviour, healthEvent
         yield return new WaitForSeconds(respawnDelay);  // Wait for the respawn delay
 
         // Respawn the player at the starting position
-        if (playerIndex == 0)  // Player 1
+        if (playerIndex == 1)  // Player 1
         {
             player.transform.position = P1StartingPosition;
         }
@@ -131,6 +131,7 @@ public class ScoreBoardScript : MonoBehaviour, healthEvent
         
         player.GetComponent<Zycie>().resetHealth();
         player.GetComponent<Movement>().unhit();
+        player.GetComponent<Player>().unPause();
         player.SetActive(true);  // Re-enable the player object
     }
 }
