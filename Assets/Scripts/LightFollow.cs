@@ -22,7 +22,7 @@ public class LightFollow : MonoBehaviour
     
     // Fix max bounces at 2
     [SerializeField]
-    private int maxBounces = 2;
+    public int maxBounces = 5;
     
     // Light color and intensity
     public Color mainLightColor = Color.white;
@@ -32,8 +32,8 @@ public class LightFollow : MonoBehaviour
     public float intensityDecay = 0.3f;   // More aggressive decay per bounce
     
     // Light shape settings
-    [Range(20f, 90f)]
-    public float spotAngle = 45f;         // Cone angle for spotlight effect
+    [Range(20f, 360f)]
+    public float spotAngle = 360f;         // Cone angle for spotlight effect
     public float falloffStrength = 0.3f;   // Requested falloff strength
     
     // Prevent additive behavior options
@@ -59,9 +59,6 @@ public class LightFollow : MonoBehaviour
 
     void Start()
     {
-        // Enforce max bounces of 2
-        maxBounces = Mathf.Min(maxBounces, 2);
-        
         // Get flashlight component
         flashlight = LightToRotate.GetComponentInChildren<Light2D>();
         if (flashlight == null)
@@ -240,7 +237,7 @@ public class LightFollow : MonoBehaviour
             Vector3 currentDirection = rayDirection;
             
             // Calculate bounces - max of 2
-            for (int bounce = 0; bounce < maxBounces; bounce++)
+            for (int bounce = 0; bounce <= maxBounces; bounce++)
             {
                 RaycastHit2D hit = Physics2D.Raycast(currentOrigin, currentDirection, maxRayDistance, reflectiveSurfaces);
                 

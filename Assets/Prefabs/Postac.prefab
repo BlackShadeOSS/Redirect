@@ -129,19 +129,19 @@ MonoBehaviour:
   reflectiveSurfaces:
     serializedVersion: 2
     m_Bits: 64
-  rayCount: 5
-  raySpread: 85
-  maxRayDistance: 11
+  rayCount: 7
+  raySpread: 83.8
+  maxRayDistance: 11.38
   rayWidth: 0.05
-  maxBounces: 2
-  mainLightColor: {r: 1, g: 1, b: 1, a: 1}
-  baseIntensity: 1.2
-  intensityDecay: 0.635
-  spotAngle: 45
-  shadowStrength: 1
+  maxBounces: 5
+  mainLightColor: {r: 1, g: 1, b: 1, a: 0}
+  baseIntensity: 0.99
+  intensityDecay: 0.45
+  spotAngle: 170
   falloffStrength: 0.3
   nonAdditiveLighting: 1
   volumetricIntensity: 0
+  shadowStrength: 0.972
 --- !u!114 &377352189172614540
 MonoBehaviour:
   m_ObjectHideFlags: 0
