@@ -7,8 +7,8 @@ public class Zycie : MonoBehaviour
     [SerializeField] private const float maxHealth = 5f;
     [SerializeField] private float health = maxHealth;
     [SerializeField] private bool _isDead = false;
+    [SerializeField] private eventRegistry _eventRegistry;
     
-    private eventRegistry _eventRegistry;
     void Start()
     {
         _eventRegistry = GetComponent<eventRegistry>();
