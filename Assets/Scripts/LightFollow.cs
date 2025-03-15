@@ -150,7 +150,7 @@ public class LightFollow : MonoBehaviour
             SetNonAdditiveBehavior(light2D);
             
             // set spot angle
-            light2D.
+            // light2D.
             
             // Configure light properties
             light2D.color = mainLightColor;  // Start with white
