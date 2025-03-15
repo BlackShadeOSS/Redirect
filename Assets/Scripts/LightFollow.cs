@@ -44,6 +44,9 @@ public class LightFollow : MonoBehaviour
     [Range(0f, 1f)]
     public float volumetricIntensity = 0.0f;
     
+    [Range(0f, 1f)]
+    public float shadowStrength = 1.0f;
+    
     private Vector2 look;
     private Vector2 _movementInput;
     private Light2D flashlight;
@@ -405,6 +408,8 @@ public class LightFollow : MonoBehaviour
         // Set light properties
         light2D.color = lightColor;
         light2D.intensity = intensity;
+
+        light2D.shadowIntensity = shadowStrength;
         
         // Scale radius slightly based on distance
         float baseRadius = maxRayDistance * 0.4f;
