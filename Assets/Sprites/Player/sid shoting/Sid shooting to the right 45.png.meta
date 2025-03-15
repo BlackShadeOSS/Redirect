@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Sid shooting to the right 45_0: 8121689684077351750
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

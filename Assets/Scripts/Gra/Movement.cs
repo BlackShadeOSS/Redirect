@@ -24,7 +24,9 @@ public class Movement : MonoBehaviour, healthEvent
     [SerializeField] private Sprite[] shootSprites = new Sprite[5]; // Shooting sprites for 5 directions
     [SerializeField] private Sprite[] hitSprites = new Sprite[5]; // Hit sprites for 5 directions
     private bool _isPlayingActionAnimation = false;
-
+    
+    [Header("Audio")]
+    [SerializeField] private AudioSource hitSound;
     private Rigidbody2D _rigidbody;
     private Vector2 _movementInput;
     private SpriteRenderer _spriteRenderer;
@@ -99,6 +101,11 @@ public class Movement : MonoBehaviour, healthEvent
     public void hitAnim()
     {
         Debug.Log("hitAnim");
+        // Play hit sound if available
+        if (hitSound != null)
+        {
+            hitSound.Play();
+        }
         this.paused = true;
         StartCoroutine(PlayActionAnimation(1, 10));
     }
