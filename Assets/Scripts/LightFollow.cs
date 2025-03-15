@@ -150,7 +150,8 @@ public class LightFollow : MonoBehaviour
             SetNonAdditiveBehavior(light2D);
             
             // set spot angle
-            // light2D.
+            light2D.pointLightInnerAngle = spotAngle * 0.7f;
+            light2D.pointLightOuterAngle = spotAngle;
             
             // Configure light properties
             light2D.color = mainLightColor;  // Start with white
@@ -160,6 +161,9 @@ public class LightFollow : MonoBehaviour
             float baseRadius = maxRayDistance * 0.4f;  
             light2D.pointLightOuterRadius = baseRadius;
             light2D.pointLightInnerRadius = baseRadius * (1.0f - falloffStrength);  
+            
+            // Set blend
+            light2D.blendStyleIndex = 0;
             
             // Set shadows for more realism - increase to 1.0 for full strength
             light2D.shadowIntensity = 1.0f;
