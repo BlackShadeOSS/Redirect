@@ -11,37 +11,29 @@ public class BulletScript : MonoBehaviour
     private int bounces;
     public int maxBounces = 3;
     public bool isActive = false;
+    public AudioSource audio;
     
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.name == "sciany")
-        {
+        if (collider.gameObject.name == "sciany" || collider.gameObject.name == "lustra")
+        {   
+            audio.Play();
             if (bounces == maxBounces)
             {
                 Destroy(this.gameObject);
                 return;
             }
-
+            
             Vector2 directionToWall = collider.transform.position - transform.position;
             Vector2 normal = directionToWall.normalized;
-
-            // Ensure the normal vector reflects properly in both horizontal and vertical cases
-            if (Mathf.Abs(normal.x) > Mathf.Abs(normal.y))
+            rb.linearVelocity = Vector2.Reflect(rb.linearVelocity, normal);
+            if (Mathf.Abs(normal.x) <= Mathf.Abs(normal.y))
             {
-                // Horizontal wall (left/right)
                 rb.linearVelocity = new Vector2(-rb.linearVelocity.x, rb.linearVelocity.y);
             }
-            else
-            {
-                // Vertical wall (top/bottom)
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, -rb.linearVelocity.y);
-            }
-
             bounces++;
         }
     }
-
-
     
     void Start()
     {
