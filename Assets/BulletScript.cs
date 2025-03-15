@@ -10,6 +10,7 @@ public class BulletScript : MonoBehaviour
     public Rigidbody2D rb;
     private int bounces;
     public int maxBounces = 3;
+    public bool isActive = false;
     
     private void OnTriggerEnter2D(Collider2D collider)
     {   
