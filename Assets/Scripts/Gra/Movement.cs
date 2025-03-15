@@ -13,38 +13,49 @@ public class Movement : MonoBehaviour
     [SerializeField] private float stepIntensity = 0.3f;
     // [SerializeField] private AudioSource stepSound;
     
-    [Header("Animation References")]
-    [SerializeField] private AnimationClip[] movementAnimations = new AnimationClip[5]; // Array for movement animations
+    [Header("Sprite References")]
+    [SerializeField] private GameObject spriteChildObject; // Child object with SpriteRenderer
     [SerializeField] private Sprite[] idleSprites = new Sprite[5]; // Array for idle sprites
-    [Tooltip("If true, will use direct animation arrays instead of Animator")]
-    [SerializeField] private bool useDirectAnimations = false;
+    [SerializeField] private Sprite[] frameOneSprites = new Sprite[5]; // First animation frame
+    [SerializeField] private Sprite[] frameTwoSprites = new Sprite[5]; // Second animation frame
+    [SerializeField] private float animationFrameRate = 8f; // Frames per second for animation
     
     private Rigidbody2D _rigidbody;
     private Vector2 _movementInput;
     private SpriteRenderer _spriteRenderer;
-    private Animator _animator;
-    private Animation _animationComponent;
+    private float _animationTimer = 0f;
+    private bool _useFrameOne = true;
     
     private float lastStepTime = 0;
     private bool _facingRight = false;
-    private int _currentAnimationIndex = 0;
+    private int _currentDirectionIndex = 0;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _animator = GetComponent<Animator>();
-        _animationComponent = GetComponent<Animation>();
         
-        if (useDirectAnimations && _animationComponent != null)
+        // Get the SpriteRenderer from the child object
+        if (spriteChildObject != null)
         {
-            // Add all animation clips to the Animation component
-            for (int i = 0; i < movementAnimations.Length; i++)
+            _spriteRenderer = spriteChildObject.GetComponent<SpriteRenderer>();
+        }
+        else
+        {
+            Debug.LogError("Sprite child object not assigned!");
+        }
+    }
+
+    private void Update()
+    {
+        // Handle animation frame switching if moving
+        if (_isMoving)
+        {
+            _animationTimer += Time.deltaTime;
+            if (_animationTimer >= 1f / animationFrameRate)
             {
-                if (movementAnimations[i] != null)
-                {
-                    _animationComponent.AddClip(movementAnimations[i], movementAnimations[i].name);
-                }
+                _animationTimer = 0f;
+                _useFrameOne = !_useFrameOne;
+                UpdateSprite();
             }
         }
     }
@@ -54,13 +65,20 @@ public class Movement : MonoBehaviour
         if (!_isMovementEnabled) return;
         
         _rigidbody.linearVelocity = _movementInput * _moveSpeed;
-        LastDirection = GetDirection(_movementInput);
+        int newDirection = GetDirection(_movementInput);
         
-        // Handle sprite flipping based on direction
-        UpdateFacingDirection(LastDirection);
-        
-        // Handle animations based on movement and direction
-        UpdateAnimation(LastDirection);
+        // Only update animation if direction changed or movement state changed
+        if (newDirection != LastDirection || _isMoving != (_movementInput != Vector2.zero))
+        {
+            LastDirection = newDirection;
+            _isMoving = (_movementInput != Vector2.zero);
+            
+            // Handle sprite flipping based on direction
+            UpdateFacingDirection(LastDirection);
+            
+            // Update sprite based on movement and direction
+            UpdateSprite();
+        }
         
         // Handle footstep sounds
         if (lastStepTime + stepIntensity < Time.time && _isMoving)
@@ -79,7 +97,15 @@ public class Movement : MonoBehaviour
     private int GetDirection(Vector2 movement)
     {
         // Update movement state
+        bool wasMoving = _isMoving;
         _isMoving = movement != Vector2.zero;
+        
+        // If movement state changed to moving, reset animation timer
+        if (!wasMoving && _isMoving)
+        {
+            _animationTimer = 0f;
+            _useFrameOne = true;
+        }
         
         // If not moving, keep the last direction
         if (!_isMoving) return LastDirection;
@@ -100,6 +126,8 @@ public class Movement : MonoBehaviour
     
     private void UpdateFacingDirection(int direction)
     {
+        if (_spriteRenderer == null) return;
+        
         // Determine if character should face right or left
         if (direction == 1 || direction == 2 || direction == 3)
         {
@@ -114,74 +142,61 @@ public class Movement : MonoBehaviour
         // For 0 and 4, we don't change the flipping
     }
     
-    private void UpdateAnimation(int direction)
+    private void UpdateSprite()
     {
-        // Map 8 directions to 5 animations
-        int animIndex = MapDirectionToAnimation(direction) - 1; // Adjust to 0-based index
+        if (_spriteRenderer == null) return;
         
-        if (animIndex >= 0 && animIndex < 5)
+        // Map 8 directions to 5 sprite indices
+        int spriteIndex = MapDirectionToSpriteIndex(LastDirection);
+        _currentDirectionIndex = spriteIndex;
+        
+        // Make sure index is valid
+        if (spriteIndex >= 0 && spriteIndex < 5)
         {
-            _currentAnimationIndex = animIndex;
-            
-            if (useDirectAnimations)
+            if (!_isMoving)
             {
-                // Use direct animation arrays
-                if (_isMoving)
-                {
-                    // Play movement animation
-                    if (_animationComponent != null && movementAnimations[_currentAnimationIndex] != null)
-                    {
-                        _animationComponent.Play(movementAnimations[_currentAnimationIndex].name);
-                    }
-                }
-                else
-                {
-                    // Display idle sprite
-                    if (_spriteRenderer != null && idleSprites[_currentAnimationIndex] != null)
-                    {
-                        _spriteRenderer.sprite = idleSprites[_currentAnimationIndex];
-                    }
-                }
+                // Use idle sprite
+                _spriteRenderer.sprite = idleSprites[spriteIndex];
             }
-            else if (_animator != null)
+            else
             {
-                // Use Animator Controller
-                _animator.SetBool("IsMoving", _isMoving);
-                _animator.SetInteger("Direction", _currentAnimationIndex + 1); // Back to 1-based for animator
-                _animator.SetBool("FacingRight", _facingRight);
+                // Alternate between frame one and frame two
+                _spriteRenderer.sprite = _useFrameOne ? 
+                    frameOneSprites[spriteIndex] : 
+                    frameTwoSprites[spriteIndex];
             }
         }
     }
     
-    private int MapDirectionToAnimation(int direction)
+    private int MapDirectionToSpriteIndex(int direction)
     {
-        // Map 8 directions to your 5 animation states:
-        // 1: Up (North)
-        // 2: 45° Left-Up (Northwest)
-        // 3: Left (West)
-        // 4: 45° Left-Down (Southwest)
-        // 5: Down (South)
+        // Map 8 directions to your 5 sprite indices (0-4):
+        // 0: Up (North)
+        // 1: 45° Left-Up (Northwest)
+        // 2: Left (West)
+        // 3: 45° Left-Down (Southwest)
+        // 4: Down (South)
         
         switch (direction)
         {
             case 0: // North
-                return 1; // Animation 1: Up
+                return 0;
             case 7: // Northwest
-                return 2; // Animation 2: 45° Left-Up
+                return 1;
             case 6: // West
-                return 3; // Animation 3: Left
+                return 2;
             case 5: // Southwest
-                return 4; // Animation 4: 45° Left-Down
+                return 3;
             case 4: // South
-                return 5; // Animation 5: Down
+                return 4;
             case 1: // Northeast (flipped Northwest)
-                return 2; // Same animation as Northwest but flipped
+                return 1;
             case 2: // East (flipped West)
-                return 3; // Same animation as West but flipped
+                return 2;
             case 3: // Southeast (flipped Southwest)
-                return 4; // Same animation as Southwest but flipped
+                return 3;
             default:
-                return 1; // Default to Up
+                return 0;
         }
     }
     
