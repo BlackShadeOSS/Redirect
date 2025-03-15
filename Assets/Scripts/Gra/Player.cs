@@ -26,12 +26,9 @@ public class Player : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log(collider.gameObject.name);
         if (collider.gameObject.name == "Bullet(Clone)")
         {   
-            Debug.Log("okok");
             zycie.TakeDamage(1.0f);
-            Debug.Log(zycie.isDead());
         }
     }
 
