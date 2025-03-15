@@ -11,7 +11,7 @@ public class LightFollow : MonoBehaviour
     public GameObject LightToRotate;
     public float angleOffset = 90.0f;
     private LookingDirection _lookingDirection;
-    
+
     // Reflection settings
     public LayerMask reflectiveSurfaces;
     public int rayCount = 3;
@@ -19,39 +19,44 @@ public class LightFollow : MonoBehaviour
     public float maxRayDistance = 10f;
     [HideInInspector]
     public float rayWidth = 0.05f;
-    
+
+    // Debug visualization
+    public bool showDebugRays = true;
+    public Color debugRayColor = Color.yellow;
+    public float debugRayDuration = 0.0f; // 0 = single frame
+
     // Fix max bounces at 2
     [SerializeField]
     public int maxBounces = 5;
-    
+
     // Light color and intensity
     public Color mainLightColor = Color.white;
     [Range(0.5f, 2.0f)]
     public float baseIntensity = 1.2f;    // Stronger initial intensity
     [Range(0.2f, 0.7f)]
     public float intensityDecay = 0.3f;   // More aggressive decay per bounce
-    
+
     // Light shape settings
     [Range(20f, 360f)]
     public float spotAngle = 360f;         // Cone angle for spotlight effect
     public float falloffStrength = 0.3f;   // Requested falloff strength
-    
+
     // Prevent additive behavior options
     [SerializeField]
     private bool nonAdditiveLighting = true;
-    
+
     // Property for controlling volumetric intensity
     [Range(0f, 1f)]
     public float volumetricIntensity = 0.0f;
-    
+
     [Range(0f, 1f)]
     public float shadowStrength = 1.0f;
-    
+
     private Vector2 look;
     private Vector2 _movementInput;
     private Light2D flashlight;
     private List<GameObject> reflectionLights = new List<GameObject>();
-    
+
     // Tracking last positions to prevent jitter
     private Vector3[][] lastHitPositions;
     private bool[][] hitActiveStatus;
@@ -70,16 +75,16 @@ public class LightFollow : MonoBehaviour
             // Set the main flashlight's shadow strength
             flashlight.shadowIntensity = 1.0f;
             flashlight.shadowVolumeIntensity = volumetricIntensity;
-            
+
             // Attempt to set composite mode if available
             SetNonAdditiveBehavior(flashlight);
         }
-        
+
         _lookingDirection = GetComponent<LookingDirection>();
-        
+
         // Initialize reflection lights
         CreateReflectionLights();
-        
+
         // Initialize position tracking arrays
         InitializePositionTracking();
     }
@@ -87,7 +92,7 @@ public class LightFollow : MonoBehaviour
     private void SetNonAdditiveBehavior(Light2D light)
     {
         if (!nonAdditiveLighting) return;
-        
+
         // Try all possible ways to set non-additive behavior via reflection
         try {
             PropertyInfo compositeProperty = typeof(Light2D).GetProperty("compositeOperation");
@@ -108,12 +113,12 @@ public class LightFollow : MonoBehaviour
         // Create arrays to track last hit positions and active status
         lastHitPositions = new Vector3[rayCount][];
         hitActiveStatus = new bool[rayCount][];
-        
+
         for (int i = 0; i < rayCount; i++)
         {
             lastHitPositions[i] = new Vector3[maxBounces];
             hitActiveStatus[i] = new bool[maxBounces];
-            
+
             // Initialize with far-away positions
             for (int j = 0; j < maxBounces; j++)
             {
@@ -134,41 +139,41 @@ public class LightFollow : MonoBehaviour
 
         // Create one light for each possible reflection point
         int totalLights = rayCount * maxBounces;
-        
+
         for (int i = 0; i < totalLights; i++)
         {
             GameObject lightObj = new GameObject($"ReflectionLight_{i}");
             lightObj.transform.SetParent(transform);
-            
+
             // Add Light2D component
             Light2D light2D = lightObj.AddComponent<Light2D>();
-            
+
             // Try to set non-additive behavior
             SetNonAdditiveBehavior(light2D);
-            
+
             // set spot angle
             light2D.pointLightInnerAngle = spotAngle * 0.7f;
             light2D.pointLightOuterAngle = spotAngle;
-            
+
             // Configure light properties
             light2D.color = mainLightColor;  // Start with white
             light2D.intensity = 0;  // Start with zero intensity
-            
+
             // Set appropriate radius and falloff
-            float baseRadius = maxRayDistance * 0.4f;  
+            float baseRadius = maxRayDistance * 0.4f;
             light2D.pointLightOuterRadius = baseRadius;
-            light2D.pointLightInnerRadius = baseRadius * (1.0f - falloffStrength);  
-            
+            light2D.pointLightInnerRadius = baseRadius * (1.0f - falloffStrength);
+
             // Set blend
             light2D.blendStyleIndex = 0;
-            
+
             // Set shadows for more realism - increase to 1.0 for full strength
             light2D.shadowIntensity = 1.0f;
             light2D.shadowVolumeIntensity = volumetricIntensity;
-            
+
             // Disable initially
             light2D.enabled = false;
-            
+
             reflectionLights.Add(lightObj);
         }
     }
@@ -200,7 +205,7 @@ public class LightFollow : MonoBehaviour
                     light.enabled = false;
                 }
             }
-            
+
             // Reset hit tracking
             for (int i = 0; i < rayCount; i++)
             {
@@ -209,77 +214,101 @@ public class LightFollow : MonoBehaviour
                     hitActiveStatus[i][j] = false;
                 }
             }
-            
+
             return;
         }
-        
+
         // Get the forward direction of the light based on its current rotation
         Vector3 baseDirection = LightToRotate.transform.up;
-        
+
         // Origin is the light's position
         Vector3 rayOrigin = LightToRotate.transform.position;
-        
+
         // Calculate the angle between rays
         float angleStep = rayCount > 1 ? raySpread / (rayCount - 1) : 0;
         float startAngle = -raySpread / 2;
-        
+
         // Track which lights are active this frame
         bool[,] currentHitActive = new bool[rayCount, maxBounces];
-        
+
         // Cast each ray
         for (int i = 0; i < rayCount; i++)
         {
             // Calculate ray direction with spread
             float angle = startAngle + i * angleStep;
             Vector3 rayDirection = Quaternion.Euler(0, 0, angle) * baseDirection;
-            
+
             Vector3 currentOrigin = rayOrigin;
             Vector3 currentDirection = rayDirection;
-            
+
+            // Debug visualization for initial ray
+            if (showDebugRays)
+            {
+                Debug.DrawRay(currentOrigin, currentDirection * maxRayDistance, debugRayColor, debugRayDuration);
+            }
+
             // Calculate bounces - max of 2
             for (int bounce = 0; bounce < maxBounces; bounce++)
             {
                 RaycastHit2D hit = Physics2D.Raycast(currentOrigin, currentDirection, maxRayDistance, reflectiveSurfaces);
-                
+
                 if (hit.collider != null)
                 {
                     // We hit something
                     Vector3 hitPoint = hit.point;
-                    
+
+                    // Debug visualization for hit point and reflection
+                    if (showDebugRays)
+                    {
+                        // Draw ray to hit point
+                        Debug.DrawLine(currentOrigin, hitPoint, Color.green, debugRayDuration);
+
+                        // Draw hit normal
+                        Debug.DrawRay(hitPoint, hit.normal * 0.5f, Color.blue, debugRayDuration);
+
+                        // Draw reflection ray
+                        Vector3 reflectionDirection = Vector3.Reflect(currentDirection, hit.normal);
+                        Debug.DrawRay(hitPoint, reflectionDirection * maxRayDistance,
+                            new Color(debugRayColor.r, debugRayColor.g, debugRayColor.b, 0.5f), debugRayDuration);
+                    }
+
                     // Mark this hit as active
                     currentHitActive[i, bounce] = true;
-                    
+
                     // Check if this hit position has moved significantly
                     bool significantChange = Vector3.Distance(hitPoint, lastHitPositions[i][bounce]) > stabilityThreshold;
                     bool statusChanged = hitActiveStatus[i][bounce] != currentHitActive[i, bounce];
-                    
+
                     // Only update light position if there's a significant change
                     if (significantChange || statusChanged)
                     {
                         // Calculate light index
                         int lightIndex = i * maxBounces + bounce;
-                        
+
                         // Update light position and properties
                         if (lightIndex < reflectionLights.Count)
                         {
                             // Calculate reflection (no randomness)
                             Vector3 reflectionDirection = Vector3.Reflect(currentDirection, hit.normal);
-                            
-                            // Calculate bounce intensity
+
+                            // Calculate bounce intensity - IMPORTANT: no decay for first bounce
                             float bounceIntensity = baseIntensity;
-                            // Only apply decay starting from second bounce
-                            if (bounce > 0) {
-                                for (int b = 0; b < bounce; b++) {
+                            
+                            // Only apply decay for subsequent bounces (not first bounce)
+                            if (bounce > 0)
+                            {
+                                for (int b = 0; b < bounce; b++)
+                                {
                                     bounceIntensity *= intensityDecay;
                                 }
                             }
-                            
+
                             // For non-additive lighting, further reduce intensity to prevent overlap issues
                             if (nonAdditiveLighting && bounce > 0)
                             {
                                 bounceIntensity *= 0.7f;  // Reduce intensity of bounce lights
                             }
-                            
+
                             // Calculate bounce color - more subtle shift toward warmer tones
                             Color bounceColor = mainLightColor;
                             if (bounce > 0)
@@ -292,7 +321,7 @@ public class LightFollow : MonoBehaviour
                                     Mathf.Max(bounceColor.b - shift * 0.4f, 0f)
                                 );
                             }
-                            
+
                             // Configure the light
                             ConfigureStableLight(
                                 reflectionLights[lightIndex],
@@ -302,12 +331,12 @@ public class LightFollow : MonoBehaviour
                                 bounceIntensity,
                                 hit.distance
                             );
-                            
+
                             // Update the stored position
                             lastHitPositions[i][bounce] = hitPoint;
                         }
                     }
-                    
+
                     // Calculate reflection for next bounce
                     Vector3 nextReflectionDirection = Vector3.Reflect(currentDirection, hit.normal);
                     currentOrigin = hitPoint + nextReflectionDirection * 0.01f;
@@ -317,7 +346,7 @@ public class LightFollow : MonoBehaviour
                 {
                     // Ray didn't hit - mark this bounce as inactive
                     currentHitActive[i, bounce] = false;
-                    
+
                     // Disable the corresponding light if it was previously active
                     if (hitActiveStatus[i][bounce])
                     {
@@ -331,19 +360,19 @@ public class LightFollow : MonoBehaviour
                             }
                         }
                     }
-                    
+
                     break;
                 }
             }
         }
-        
+
         // Update active status for the next frame
         for (int i = 0; i < rayCount; i++)
         {
             for (int j = 0; j < maxBounces; j++)
             {
                 hitActiveStatus[i][j] = currentHitActive[i, j];
-                
+
                 // If this hit is no longer active, disable its light
                 if (!currentHitActive[i, j])
                 {
@@ -361,42 +390,42 @@ public class LightFollow : MonoBehaviour
         }
     }
 
-    private void ConfigureStableLight(GameObject lightObj, Vector3 position, Vector3 direction, 
+    private void ConfigureStableLight(GameObject lightObj, Vector3 position, Vector3 direction,
                                    Color lightColor, float intensity, float hitDistance)
     {
         Light2D light2D = lightObj.GetComponent<Light2D>();
         if (light2D == null) return;
-        
+
         // Position the light at the hit point
         lightObj.transform.position = position;
-        
+
         // Orient the light in the reflection direction
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         lightObj.transform.rotation = Quaternion.Euler(0, 0, angle - 90);
-        
+
         // Set light properties
         light2D.color = lightColor;
         light2D.intensity = intensity;
 
         light2D.shadowIntensity = shadowStrength;
-        
+
         // Scale radius slightly based on distance
         float baseRadius = maxRayDistance * 0.4f;
         float radiusScale = 1.0f + (hitDistance / maxRayDistance) * 0.2f;
-        
+
         // Apply fall-off settings
         light2D.pointLightOuterRadius = baseRadius * radiusScale;
         light2D.pointLightInnerRadius = light2D.pointLightOuterRadius * (1.0f - falloffStrength);
-        
+
         // Enable the light
         light2D.enabled = true;
-        
+
         // For spotlight types, make sure it's properly oriented
         if (light2D.lightType.ToString() == "Spot")
         {
             // Spot lights might need additional orientation help
             // This works because the light is already oriented with transform.rotation
-            
+
             // Try to set falloff for spotlight if possible
             var falloffProperty = light2D.GetType().GetProperty("falloffIntensity");
             if (falloffProperty != null)
@@ -409,7 +438,7 @@ public class LightFollow : MonoBehaviour
             // For point lights, we use a directional cookie to fake a spotlight effect
             // This is a backup if the Spot type isn't available
             // The directionality is achieved by changing the light's transform orientation
-            
+
             // We can narrow the effective radius in the direction we don't want light
             // by making the light position slightly offset in the direction of reflection
             float offset = 0.1f;
