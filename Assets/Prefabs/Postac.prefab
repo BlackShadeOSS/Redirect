@@ -161,17 +161,17 @@ MonoBehaviour:
   stepIntensity: 0.3
   movementAnimations:
   - {fileID: 7400000, guid: 36c50c773aa1d5d41b99c94a8eaaa9c3, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 7400000, guid: 4941c83c544d78d4da5d1d8ea02994e9, type: 2}
+  - {fileID: 7400000, guid: 1855ba9f12983ea4bbc6c1dc1b7b7b70, type: 2}
+  - {fileID: 7400000, guid: d1dbeedc43e27d04080c817d98fb3878, type: 2}
+  - {fileID: 7400000, guid: eda3923d4cd47214c944bae9a6182aa8, type: 2}
   idleSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  useDirectAnimations: 0
+  - {fileID: -8774619837040367957, guid: bf84a3626f10fc658bff56745926059f, type: 3}
+  - {fileID: 5886597821160666012, guid: 9e3f515321555c09da7de5595c2528e7, type: 3}
+  - {fileID: -6481092473165741085, guid: e4485e726bdcc00858399dbf48b92958, type: 3}
+  - {fileID: 4912600045298120074, guid: 7c6c345f283b1156e992edfdc638d651, type: 3}
+  - {fileID: -3204031014198847521, guid: 4d099dd0820e733298347cb4ee4c9f13, type: 3}
+  useDirectAnimations: 1
 --- !u!50 &3549816725592504299
 Rigidbody2D:
   serializedVersion: 5
