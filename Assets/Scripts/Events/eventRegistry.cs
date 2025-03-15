@@ -21,8 +21,10 @@ namespace Events
 
         public static void healthEventOnHit(GameObject player, float damage)
         {
+            Debug.Log("krucyfiks");
             foreach (var _healthEvent in healthEventListeners)
             {
+                Debug.Log("healthEventOnHit");
                 _healthEvent.onHit(player, damage);
             }
         }
