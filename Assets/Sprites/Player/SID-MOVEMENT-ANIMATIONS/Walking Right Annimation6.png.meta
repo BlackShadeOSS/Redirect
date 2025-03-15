@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Walking Right Annimation6_0: -5082686925488714159
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
