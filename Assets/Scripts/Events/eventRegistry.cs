@@ -6,31 +6,32 @@ namespace Events
 {
     public class eventRegistry : MonoBehaviour
     {
-        [SerializeField] private List<healthEvent> healthEventListeners = new List<healthEvent>();
+        public static List<healthEvent> healthEventListeners = new List<healthEvent>();
 
-        public void addHealthEvent(healthEvent e)
+        public static void addHealthEvent(healthEvent e)
         {
             healthEventListeners.Add(e);
+            Debug.Log("Registered new health event, count: " + healthEventListeners.Count);
         }
 
-        public void removeHealthEvent(healthEvent e)
+        public static void removeHealthEvent(healthEvent e)
         {
             healthEventListeners.Remove(e);
         }
 
-        public void healthEventOnHit(float damage)
+        public static void healthEventOnHit(GameObject player, float damage)
         {
             foreach (var _healthEvent in healthEventListeners)
             {
-                _healthEvent.onHit(damage);
+                _healthEvent.onHit(player, damage);
             }
         }
 
-        public void healthEventOnDeath()
+        public static void healthEventOnDeath(GameObject player)
         {
             foreach (var _healthEvent in healthEventListeners)
             {
-                _healthEvent.onDeath();
+                _healthEvent.onDeath(player);
             }
         }
     }
