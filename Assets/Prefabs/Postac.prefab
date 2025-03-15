@@ -158,7 +158,6 @@ MonoBehaviour:
   _isMoving: 0
   _isMovementEnabled: 1
   stepIntensity: 0.3
-  spriteChildObject: {fileID: 0}
   idleSprites:
   - {fileID: -8774619837040367957, guid: bf84a3626f10fc658bff56745926059f, type: 3}
   - {fileID: 5886597821160666012, guid: 9e3f515321555c09da7de5595c2528e7, type: 3}

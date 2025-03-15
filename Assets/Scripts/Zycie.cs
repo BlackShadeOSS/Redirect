@@ -5,7 +5,7 @@ public class Zycie : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private const float maxHealth = 5f;
-    [SerializeField] private float health = maxHealth;
+    [SerializeField] public float health = maxHealth;
     [SerializeField] private bool _isDead = false;
     
     void Start()
@@ -29,6 +29,8 @@ public class Zycie : MonoBehaviour
     {
         return _isDead;
     }
+
+
     
 
     private void checkHealth()
