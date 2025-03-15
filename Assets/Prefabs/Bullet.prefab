@@ -182,6 +182,7 @@ MonoBehaviour:
   maxBounces: 6
   isActive: 0
   audio: {fileID: 3670863840901938548}
+  particleEffectPrefab: {fileID: 7801831900448536875, guid: 2cd3f3f856a02424cb2b52ff6e227aba, type: 3}
 --- !u!82 &3670863840901938548
 AudioSource:
   m_ObjectHideFlags: 0
