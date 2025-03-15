@@ -265,11 +265,13 @@ public class LightFollow : MonoBehaviour
                             // Calculate reflection (no randomness)
                             Vector3 reflectionDirection = Vector3.Reflect(currentDirection, hit.normal);
                             
-                            // Calculate bounce intensity - more aggressive decay
+                            // Calculate bounce intensity
                             float bounceIntensity = baseIntensity;
-                            for (int b = 0; b <= bounce; b++)
-                            {
-                                bounceIntensity *= intensityDecay;
+                            // Only apply decay starting from second bounce
+                            if (bounce > 0) {
+                                for (int b = 0; b < bounce; b++) {
+                                    bounceIntensity *= intensityDecay;
+                                }
                             }
                             
                             // For non-additive lighting, further reduce intensity to prevent overlap issues
