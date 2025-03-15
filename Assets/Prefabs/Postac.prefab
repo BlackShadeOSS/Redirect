@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 664c41b8368a274709b6dbdcc611ca7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 3
   _isDead: 0
 --- !u!114 &1044722806164379994
 MonoBehaviour:
@@ -128,22 +128,22 @@ MonoBehaviour:
   reflectiveSurfaces:
     serializedVersion: 2
     m_Bits: 64
-  rayCount: 7
-  raySpread: 83.8
-  maxRayDistance: 9.2
+  rayCount: 0
+  raySpread: 80
+  maxRayDistance: 6.68
   rayWidth: 0.05
   showDebugRays: 1
   debugRayColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   debugRayDuration: 0.5
-  maxBounces: 5
+  maxBounces: 3
   mainLightColor: {r: 1, g: 1, b: 1, a: 0}
-  baseIntensity: 0.99
-  intensityDecay: 0.45
-  spotAngle: 170
+  baseIntensity: 0.59
+  intensityDecay: 0.385
+  spotAngle: 360
   falloffStrength: 0.3
   nonAdditiveLighting: 1
   volumetricIntensity: 0
-  shadowStrength: 0.972
+  shadowStrength: 0.837
 --- !u!114 &377352189172614540
 MonoBehaviour:
   m_ObjectHideFlags: 0
