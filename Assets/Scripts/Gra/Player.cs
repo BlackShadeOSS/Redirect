@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
                 collider.GetComponent<BulletScript>().isActive = true;
                 return;
             }
-            zycie.TakeDamage(1.0f);
+            zycie.TakeDamage(1.0f); 
             Destroy(collider.gameObject);
         }
     }
