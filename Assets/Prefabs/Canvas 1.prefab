@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 2282918444514624643}
   - component: {fileID: 8748213496841619216}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: 'Text (TMP) end '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1388,6 +1388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 1477786772227757588}
   totalTime: 90
+  scoreBoardScript: {fileID: 0}
 --- !u!1 &6611189108723037776
 GameObject:
   m_ObjectHideFlags: 0

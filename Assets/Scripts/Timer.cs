@@ -6,6 +6,7 @@ public class Timer : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private float totalTime = 180f; // 3 minutes in seconds
+    public ScoreBoardScript scoreBoardScript;
     
     private float remainingTime;
     private bool isTimerRunning = true;
@@ -24,6 +25,9 @@ public class Timer : MonoBehaviour
             }
         }
         
+        // Get score board script
+        scoreBoardScript = GameObject.Find("ScoreBoard").GetComponent<ScoreBoardScript>();
+        
         // Initialize timer
         remainingTime = totalTime;
         UpdateTimerDisplay();
@@ -41,7 +45,7 @@ public class Timer : MonoBehaviour
             {
                 remainingTime = 0;
                 isTimerRunning = false;
-                EndGame();
+                scoreBoardScript.EndGame();
             }
             
             // Update the display
@@ -55,20 +59,5 @@ public class Timer : MonoBehaviour
         int minutes = Mathf.FloorToInt(remainingTime / 60);
         int seconds = Mathf.FloorToInt(remainingTime % 60);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-    }
-    
-    void EndGame()
-    {
-        Debug.Log("Koniec czasu! Gra zakończona.");
-        
-        // You can implement your game ending logic here:
-        // Option 1: Load a "Game Over" scene
-        // SceneManager.LoadScene("GameOver");
-        
-        // Option 2: Show a game over panel
-        // gameOverPanel.SetActive(true);
-        
-        // Option 3: Just quit the game (for testing)
-        // Application.Quit();
     }
 }
