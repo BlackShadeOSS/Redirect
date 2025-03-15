@@ -1,3 +1,4 @@
+using Events;
 using UnityEngine;
 
 public class Zycie : MonoBehaviour
@@ -6,15 +7,11 @@ public class Zycie : MonoBehaviour
     [SerializeField] private const float maxHealth = 5f;
     [SerializeField] private float health = maxHealth;
     [SerializeField] private bool _isDead = false;
+    
+    private eventRegistry _eventRegistry;
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _eventRegistry = GetComponent<eventRegistry>();
     }
 
     public void resetHealth()
@@ -26,6 +23,7 @@ public class Zycie : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
+        _eventRegistry.healthEventOnHit(damage);
         checkHealth();
     }
 
@@ -39,6 +37,7 @@ public class Zycie : MonoBehaviour
         if (health <= 0)
         {
             this._isDead = true;
+            _eventRegistry.healthEventOnDeath();
         }
     }
     
