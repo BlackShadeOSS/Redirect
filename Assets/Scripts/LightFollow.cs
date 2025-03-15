@@ -237,7 +237,7 @@ public class LightFollow : MonoBehaviour
             Vector3 currentDirection = rayDirection;
             
             // Calculate bounces - max of 2
-            for (int bounce = 0; bounce <= maxBounces; bounce++)
+            for (int bounce = 0; bounce < maxBounces; bounce++)
             {
                 RaycastHit2D hit = Physics2D.Raycast(currentOrigin, currentDirection, maxRayDistance, reflectiveSurfaces);
                 
