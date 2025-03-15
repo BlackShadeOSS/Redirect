@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 2196226593819127479}
   - component: {fileID: 4903179138809807915}
   - component: {fileID: 1725866997497321192}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: sciany
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5190,8 +5190,8 @@ MonoBehaviour:
   m_ShadowMesh:
     m_Mesh: {fileID: 0}
     m_LocalBounds:
-      m_Center: {x: -0.5, y: 0, z: 0}
-      m_Extent: {x: 20.5, y: 21, z: 0}
+      m_Center: {x: -0.5, y: -1, z: 0}
+      m_Extent: {x: 20.5, y: 22, z: 0}
     m_EdgeProcessing: 1
     m_TrimEdge: 0
     m_FlipX: 0
