@@ -29,7 +29,6 @@ public class Zycie : MonoBehaviour
     {
         return _isDead;
     }
-    
 
     private void checkHealth()
     {
@@ -39,5 +38,9 @@ public class Zycie : MonoBehaviour
             eventRegistry.healthEventOnDeath(gameObject);
         }
     }
-    
+
+    public float getHealth()
+    {
+        return health;
+    }
 }
