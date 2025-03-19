@@ -26,7 +26,7 @@
 
 ## Hackathon Achievement
 
-Developed in just **20 hours** for the WSEICRAFT Hackathon, **Redirect** secured **1st place** in the competition. This rapid development process has resulted in an innovative and engaging gameplay experience.
+Developed in just **20 hours** for the WSEICRAFT Hackathon, **Redirect** secured **1st place** in the competition. This rapid development process has resulted in an innovative and engaging gameplay experience. With many funny and weird bugs.
 
 ## Disclaimer
 
