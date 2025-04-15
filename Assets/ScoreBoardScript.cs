@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using System;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 
 public class ScoreBoardScript : MonoBehaviour, healthEvent
@@ -35,9 +36,14 @@ public class ScoreBoardScript : MonoBehaviour, healthEvent
 
     // Respawn delay in seconds
     public float respawnDelay = 2f;
-    
+
     public GameObject player;
     public GameObject player2;
+
+    public TMP_Text countdownText;
+    public int countdownTime = 5;
+    public int sceneIndexToLoad = 0;
+
 
     void Start()
     {
@@ -99,24 +105,73 @@ public class ScoreBoardScript : MonoBehaviour, healthEvent
     // Method to end the game and display the winner
     public void EndGame()
     {
-        // Determine the winner
-        string winner = playerScores[0] >= pointsToWin ? "Player 1 Wins!" : "Player 2 Wins!";
+        player.SetActive(false);
+        player2.SetActive(false);
 
-        // Show the end game panel
+        string winner;
+
+        if (playerScores[0] >= pointsToWin)
+        {
+            winner = "Player 1 Wins!";
+        }
+        else if (playerScores[1] >= pointsToWin)
+        {
+            winner = "Player 2 Wins!";
+        }
+        else
+        {
+            // Time-based ending — decide by current score
+            if (playerScores[0] > playerScores[1])
+            {
+                winner = "Player 1 Wins!";
+            }
+            else if (playerScores[1] > playerScores[0])
+            {
+                winner = "Player 2 Wins!";
+            }
+            else
+            {
+                winner = "It's a Draw!";
+            }
+        }
+
         endGamePanel.SetActive(true);
-        endGameText.text = winner;  // Display the winner's message
-        
+        endGameText.text = winner;
+
+        // Pause both players
         player.GetComponent<Player>().paused = true;
         player.GetComponent<Movement>().paused = true;
         player2.GetComponent<Player>().paused = true;
         player2.GetComponent<Movement>().paused = true;
+
         StartCoroutine(exitOO());
+        //StartCoroutine(CountdownRoutine());
     }
+
+
 
     public IEnumerator exitOO()
     {
-        yield return new WaitForSeconds(5); 
-        Application.Quit();
+        int timeleft = countdownTime;
+
+        while (timeleft > 0)
+        {
+            countdownText.text = $"In {timeleft} second{(timeleft == 1 ? "" : "s")} you will be back in the lobby";
+            Debug.Log($"Countdown: {timeleft}");
+            yield return new WaitForSeconds(1f);
+            timeleft--;
+        }
+
+        countdownText.text = "Returning to lobby...";
+        Debug.Log("Countdown complete. Loading scene...");
+
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(sceneIndexToLoad);
+
+
+        //yield return new WaitForSeconds(5);
+        //SceneManager.LoadScene(0);
+        //Application.Quit();
     }
 
     // Method to clean up all bullets in the scene
@@ -143,7 +198,7 @@ public class ScoreBoardScript : MonoBehaviour, healthEvent
         {
             player.transform.position = P2StartingPosition;
         }
-        
+
         player.GetComponent<Zycie>().resetHealth();
         player.GetComponent<Movement>().unhit();
         player.GetComponent<Player>().unPause();
